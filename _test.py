@@ -1,5 +1,11 @@
-import math
+import sys 
 
-A, B, V = map(int, input().split())
-d = (V-A)/(A-B)
-print(math.floor(d)+1)
+l = int(sys.stdin.readline())
+
+for _ in range(l):
+  k = int(sys.stdin.readline())
+  n = int(sys.stdin.readline())
+  for _ in range(k):
+    i = 0
+    s += i
+    i += 1
