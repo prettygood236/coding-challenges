@@ -1,11 +1,14 @@
-import sys 
+import sys
 
-l = int(sys.stdin.readline())
+a = int(sys.stdin.readline())
+b = int(sys.stdin.readline())
+s = 0
 
-for _ in range(l):
-  k = int(sys.stdin.readline())
-  n = int(sys.stdin.readline())
-  for _ in range(k):
-    i = 0
-    s += i
-    i += 1
+for _ in range(b):
+  c,d = map(int,sys.stdin.readline().split())
+  s+=c*d
+
+if a == s:
+  print('Yes')
+else :
+  print('No')
