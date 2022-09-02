@@ -1,22 +1,14 @@
-import sys
-
-N = int(sys.stdin.readline())
-
-def prime_list(n):
-  sieve = [True] * n
-
-  m = int(n**0.5)
-  for i in range(2,m+1):
-    if i == True:
-      for j in range (i+i,n,i):
-        sieve[j] = False
+def fac(N):
+  if N == 0:
+    return 1
   
-  return [i for i in range(2,n) if sieve[i] == True]
+  f = 1
+  result = 1
+  while True:
+    if f == N:
+      return result
+    f += 1
+    result *= f
 
-l = list(set(prime_list((N*2)+1)) - set(prime_list(N+1)))
-
-print(l)
-print(len(l))
-
-
-
+N = int(input())
+print(fac(N))
