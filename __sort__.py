@@ -57,9 +57,21 @@ def merge_sort(array):
             
     return array
 
+
+
+# count_sort
+
 import sys
+
+count = [0] * ( 10000 + 1)
+
 N = int(sys.stdin.readline())
-L = []
+
 for _ in range(N):
-  L.append(int(sys.stdin.readline()))
-print(*merge_sort(L),sep='\n')
+  M = int(sys.stdin.readline())
+  count[M] += 1
+
+for i in range(len(count)):
+  for j in range(count[i]):
+    print(i)
+

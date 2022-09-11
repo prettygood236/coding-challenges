@@ -86,3 +86,4 @@ def prime_list(n):
 
   return [i for i in range(2,m) if sieve[i] == True] 
   
+  
