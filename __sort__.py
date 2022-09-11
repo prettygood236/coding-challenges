@@ -61,17 +61,83 @@ def merge_sort(array):
 
 # count_sort
 
+# import sys
+
+# N = int(sys.stdin.readline())
+
+# count = [0] * ( 10000 + 1)
+
+# for _ in range(N):
+#   M = int(sys.stdin.readline())
+#   count[M] += 1
+
+# for i in range(len(count)):
+#   for j in range(count[i]):
+#     print(i)
+
+
+
+# import sys
+
+# N,k = map(int,sys.stdin.readline().split())
+# L = list(map(int,sys.stdin.readline().split()))
+# Sorted = []
+
+# count = [0] * (10000 +1)
+
+# for i in L:
+#   count[i] += 1
+
+# for i in range(len(count)):
+#   for j in range(count[i]):
+#     Sorted.append(i)
+
+# print(Sorted[-k])
+
+
+from collections import Counter
+
+def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
+  c = Counter(numbers)
+  mode = c.most_common(2)
+  if len(mode) == 2 and mode[0][1] == mode[1][1]:
+    return mode[1][0]
+  return mode[0][0]
+
+# import sys 
+
+# N = int(sys.stdin.readline())
+# L = []
+
+# for _ in range(N):
+#   L.append(int(sys.stdin.readline()))
+
+# L.sort()
+
+# print(round(sum(L)/N))
+# print(L[len(L)//2])
+# print(modefinder(L))
+# print(L[-1]-L[0])
+
+
+
+# import sys
+# N = sys.stdin.readline().strip()
+# L = list(map(int,N))
+
+# L.sort(reverse=True)
+# print(*L,sep='')
+
+
+
+
 import sys
-
-count = [0] * ( 10000 + 1)
-
 N = int(sys.stdin.readline())
+XL = []
+YL = []
 
 for _ in range(N):
-  M = int(sys.stdin.readline())
-  count[M] += 1
-
-for i in range(len(count)):
-  for j in range(count[i]):
-    print(i)
+  x,y = map(int,sys.stdin.readline().split())
+  XL.append(x)
+  YL.append(y)
 
