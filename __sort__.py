@@ -131,13 +131,75 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 
 
 
+# import sys
+# N = int(sys.stdin.readline())
+# L = []
+
+# for _ in range(N):
+#   L.append(list(map(int,sys.stdin.readline().split())))
+
+# L.sort()
+
+# for i in L:
+#   print(*i)
+
+
+
+# import sys
+# N = int(sys.stdin.readline())
+# L = []
+
+# for _ in range(N):
+#   L.append(list(map(int,sys.stdin.readline().split())))
+
+# L.sort(key=lambda x:[x[1],x[0]]) 
+# # L.sort(key=lambda x:x[1]) #? 이거 왜 안돼??
+
+# for i in L:
+#   print(*i)
+
+
+
+# import sys 
+# N = int(sys.stdin.readline())
+# L = []
+
+# for _ in range(N):
+#   L.append(sys.stdin.readline().strip())
+
+# New_L = list(set(L))
+# New_L.sort()
+# Sorted_L = sorted(New_L, key=len)
+
+# for i in Sorted_L:
+#   print(i)
+
+
+
+# import sys
+# N = int(sys.stdin.readline())
+# L = []
+
+# for i in range(N):
+#   A,B = sys.stdin.readline().split()
+#   A = int(A)
+#   L.append([A,B,i])
+
+# L.sort(key=lambda x:[x[0],x[2],x[1]])
+
+# for i in L:
+#   del i[2]
+#   print(*i)
+
+
+
 import sys
 N = int(sys.stdin.readline())
-XL = []
-YL = []
+L = list(map(int,sys.stdin.readline().split()))
 
-for _ in range(N):
-  x,y = map(int,sys.stdin.readline().split())
-  XL.append(x)
-  YL.append(y)
+R = sorted(list((set(L))))
+dic_R = {x : i for i,x in enumerate(R)} #! dict는 key를 이용해 O(1)의 시간복잡도로 value를 찾을 수 있다!.
 
+for i in L :
+  # print(R.index(i),end=' ') #! index는 O(N)이 걸리기 때문에 O(N^2)으로 시간복잡도를 초과하게 된다.
+  print(dic_R[i], end=' ')  
