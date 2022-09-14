@@ -25,37 +25,74 @@ def quick_sort(array):
   right_side = [x for x in tail if x > pivot ]
 
   return quick_sort(left_side) + [pivot] + quick_sort(right_side)
-  
 
-def merge_sort(array):
-    if len(array) > 1:
-        mid = len(array)//2
-        L = array[:mid]
-        R = array[mid:]
-        merge_sort(L)
-        merge_sort(R)
-        i = j = k = 0
-  
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                array[k] = L[i]
-                i += 1
-            else:
-                array[k] = R[j]
-                j += 1
-            k += 1
 
-        while i < len(L):
-            array[k] = L[i]
-            i += 1
-            k += 1
+
   
-        while j < len(R):
-            array[k] = R[j]
-            j += 1
-            k += 1
-            
-    return array
+import math
+
+def merge_sort(array,result):
+  if len(array) > 1:
+    # mid = len(array)//2
+    mid = math.ceil(len(array)/2)
+    # print(mid)
+    L = array[:mid]
+    R = array[mid:]
+    # print('L',L)
+    # print('R',R)
+    # print('call merge_sort L')
+    merge_sort(L,result)
+    # print('call merge_sort R')
+    merge_sort(R,result)
+    i = j = k = 0
+
+    while i < len(L) and j < len(R):
+      if L[i] < R[j]:
+        array[k] = L[i]
+        # print('array',array)
+        i += 1
+        # print('i',i)
+
+      else:
+        array[k] = R[j]
+        # print('array',array)
+        j += 1
+        # print('j',j)
+
+      k += 1
+      # print('k',k)
+
+    while i < len(L):
+      array[k] = L[i]
+      # print('array',array)
+      i += 1
+      k += 1
+      # print('i',i)
+      # print('k',k)
+  
+    while j < len(R):
+      array[k] = R[j]
+      j += 1
+      k += 1
+      # print('j',j)
+      # print('k',k)
+
+  if len(array) > 1:
+    result += array
+  return array,result
+
+import sys
+N,K = map(int,sys.stdin.readline().split())
+array = list(map(int,sys.stdin.readline().split()))
+result = []
+array,result = merge_sort(array,result)
+
+if K <= len(result):
+  print(result[K-1])
+else:
+  print(-1)
+
+
 
 
 
@@ -193,13 +230,13 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 
 
 
-import sys
-N = int(sys.stdin.readline())
-L = list(map(int,sys.stdin.readline().split()))
+# import sys
+# N = int(sys.stdin.readline())
+# L = list(map(int,sys.stdin.readline().split()))
 
-R = sorted(list((set(L))))
-dic_R = {x : i for i,x in enumerate(R)} #! dict는 key를 이용해 O(1)의 시간복잡도로 value를 찾을 수 있다!.
+# R = sorted(list((set(L))))
+# dic_R = {x : i for i,x in enumerate(R)} #! dict는 key를 이용해 O(1)의 시간복잡도로 value를 찾을 수 있다!.
 
-for i in L :
-  # print(R.index(i),end=' ') #! index는 O(N)이 걸리기 때문에 O(N^2)으로 시간복잡도를 초과하게 된다.
-  print(dic_R[i], end=' ')  
+# for i in L :
+#   # print(R.index(i),end=' ') #! index는 O(N)이 걸리기 때문에 O(N^2)으로 시간복잡도를 초과하게 된다.
+#   print(dic_R[i], end=' ')  

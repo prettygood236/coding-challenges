@@ -30,3 +30,25 @@ def recursive_case_one(n,m):
 # n = int(input())
 # recursive_case_one(n,m)
 
+
+def isPalidrome(str):
+  call = 0
+
+  def recursion(str,l,r,call):
+    call += 1
+    if l >= r :
+      print(1,call)
+      return 1
+    elif str[l] != str[r]:
+      print(0,call)
+      return 0
+    else :
+      return recursion(str,l+1,r-1,call)
+  
+  return recursion(str,0,len(str)-1,call)
+
+# import sys
+# N = int(sys.stdin.readline())
+# for _ in range(N):
+#   str = sys.stdin.readline().strip()
+#   isPalidrome(str)
