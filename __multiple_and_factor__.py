@@ -80,25 +80,57 @@
 
 
 
+
+# #. a = MQ + R, b = MQ' + R c = MQ'' + R
+# #. a-b = M(Q-Q'), b-c = M(Q'-Q'')
+# #. M은 a-b, b-c의 공약수이므로, 
+# #* 즉, M은 a-b, b-c의 최대공약수의 약수이다. 
+
+# import sys
+
+# N = int(sys.stdin.readline())
+# L = list(int(sys.stdin.readline()) for _ in range(N))
+# R = list()
+# D = list()
+
+# L.sort(reverse=True)
+
+# for i in range(len(L)-1):
+#   D.append(L[i]-L[i+1])
+
+# def GCD(a,b):
+#   # Euclidean Algorithm
+#   n = a
+#   m = b
+#   while True:
+#     r = n%m
+#     if r == 0:
+#       return m
+#     a = b
+#     b = r
+
+
+# for i in range(len(D)-1):
+
+# print(R)
+
+
+
+#* 기약분수 : 분자, 분모의 공약수가 1뿐인 분수. 
+#. 분자, 분모를 분자, 분모의 최대공약수로 나누면 된다. 
+
 import sys
-
 N = int(sys.stdin.readline())
-L = list(int(sys.stdin.readline()) for _ in range(N))
-M = 2
-R = list()
+L = list(map(int,sys.stdin.readline().split()))
 
-while True:
-  if M == min(L):
-    break
+def GCD(a,b):
+  while True:
+    r = a % b
+    if r == 0 :
+      return b
+    a = b
+    b = r
 
-  S = set()
-  for i in L:
-    S.add(i % M)
-
-  if len(S) == 1:
-    R.append(M)
-    
-  M += 1
-
-R.sort()
-print(*R, end=' ')
+for i in range(1,len(L)):
+  d = GCD(L[0],L[i])
+  print(int(L[0]/d),'/',int(L[i]/d),sep='')
