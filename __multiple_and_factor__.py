@@ -81,56 +81,105 @@
 
 
 
-# #. a = MQ + R, b = MQ' + R c = MQ'' + R
-# #. a-b = M(Q-Q'), b-c = M(Q'-Q'')
-# #. M은 a-b, b-c의 공약수이므로, 
-# #* 즉, M은 a-b, b-c의 최대공약수의 약수이다. 
+#. a = MQ + R, b = MQ' + R c = MQ'' + R
+#. a-b = M(Q-Q'), b-c = M(Q'-Q'')
+#. M은 a-b, b-c의 공약수이므로, 
+#* 즉, M은 a-b, b-c의 최대공약수의 약수이다. 
 
 # import sys
-
+        
 # N = int(sys.stdin.readline())
-# L = list(int(sys.stdin.readline()) for _ in range(N))
-# R = list()
-# D = list()
+# L = sorted(list(int(sys.stdin.readline()) for _ in range(N)))
+# R = []
 
-# L.sort(reverse=True)
+# D = [L[i+1]-L[i] for i in range(N-1)] 
 
-# for i in range(len(L)-1):
-#   D.append(L[i]-L[i+1])
-
+# # Uclidean Algorithm
 # def GCD(a,b):
-#   # Euclidean Algorithm
-#   n = a
-#   m = b
 #   while True:
-#     r = n%m
+#     r = a % b
 #     if r == 0:
-#       return m
+#       return b
 #     a = b
 #     b = r
 
+# G = D[0]
+# for i in range(1,len(D)):
+#   G = GCD(G, D[i])
 
-# for i in range(len(D)-1):
+# for i in range(1, int(G**0.5)+1):
+#   if G % i == 0:
+#     if i**2 == G:
+#       R.append(i)
 
-# print(R)
+#     else: 
+#       R += [i,G//i]
+
+# R.remove(1)
+# R.sort()
+
+# for i in R:
+#   print(i,sep=' ')
+
 
 
 
 #* 기약분수 : 분자, 분모의 공약수가 1뿐인 분수. 
 #. 분자, 분모를 분자, 분모의 최대공약수로 나누면 된다. 
 
+# import sys
+# N = int(sys.stdin.readline())
+# L = list(map(int,sys.stdin.readline().split()))
+
+# def GCD(a,b):
+#   while True:
+#     r = a % b
+#     if r == 0 :
+#       return b  
+#     a = b
+#     b = r
+
+# for i in range(1,len(L)):
+#   d = GCD(L[0],L[i])
+#   print(int(L[0]/d),'/',int(L[i]/d),sep='')
+
+
+
+
+# 조합 nCk를 구하는 문제 
+# import sys
+
+# N,K = map(int,sys.stdin.readline().split())
+# a = 1
+# b = 1
+
+# for _ in range(K):
+#   a *= N
+#   b *= K
+#   N -= 1
+#   K -= 1
+
+# print(a//b)
+
+
+
+
+# dynamic programming을 이용한 이항계수 nCk 정리.
+
 import sys
-N = int(sys.stdin.readline())
-L = list(map(int,sys.stdin.readline().split()))
 
-def GCD(a,b):
-  while True:
-    r = a % b
-    if r == 0 :
-      return b
-    a = b
-    b = r
+N,K = map(int,sys.stdin.readline().split())
+dp = [[0]*(i+1) for i in range(1001)]
 
-for i in range(1,len(L)):
-  d = GCD(L[0],L[i])
-  print(int(L[0]/d),'/',int(L[i]/d),sep='')
+dp[0][0] = 1
+
+for i in range(1,1001):
+  for j in range(i):
+    if j == 0 or j == i:
+      dp[i][j] = 1
+      dp[i][i] = 1
+    else:
+      dp[i][j] = dp[i-1][j-1] + dp[i-1][j] 
+
+print(dp[N][K]%10007)
+
