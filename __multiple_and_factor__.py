@@ -164,22 +164,68 @@
 
 
 
-# dynamic programming을 이용한 이항계수 nCk 정리.
+#. dynamic programming을 이용한 이항계수 nCk 정리.
 
-import sys
+# import sys
 
-N,K = map(int,sys.stdin.readline().split())
-dp = [[0]*(i+1) for i in range(1001)]
+# N,K = map(int,sys.stdin.readline().split())
+# dp = [[0]*(i+1) for i in range(1001)]
 
-dp[0][0] = 1
+# dp[0][0] = 1
 
-for i in range(1,1001):
-  for j in range(i):
-    if j == 0 or j == i:
-      dp[i][j] = 1
-      dp[i][i] = 1
+# for i in range(1,1001):
+#   for j in range(i):
+#     if j == 0 or j == i:
+#       dp[i][j] = 1
+#       dp[i][i] = 1
+#     else:
+#       dp[i][j] = dp[i-1][j-1] + dp[i-1][j] 
+
+# print(dp[N][K]%10007)
+
+
+
+
+
+
+#   #. M^C^N을 구하는 문제. 
+# import sys
+
+# T = int(sys.stdin.readline())
+
+
+# def factorial(x):
+#   if x > 1:
+#     return x * factorial(x-1)
+#   else:
+#     return 1 
+
+# for _ in range(T):
+#   N,M = map(int,sys.stdin.readline().split())
+#   print(factorial(M) // (factorial(M-N)*factorial(N)))
+
+
+
+
+#. (A종류의 수+1)*(B종류의 수+1)*... - 1 
+import sys 
+
+T = int(sys.stdin.readline())
+
+for _ in range(T):
+  N = int(sys.stdin.readline())
+  D = {}
+  for _ in range(N):
+    a,b = sys.stdin.readline().strip().split()
+    if b in D:
+      D[b].append(a)
     else:
-      dp[i][j] = dp[i-1][j-1] + dp[i-1][j] 
+      D[b] = [a]
+  result = 1
+  for key in D:
+    result *= len(D[key])+1
+  result -= 1
 
-print(dp[N][K]%10007)
+  print(result)
+    
 
