@@ -207,25 +207,80 @@
 
 
 
-#. (A종류의 수+1)*(B종류의 수+1)*... - 1 
-import sys 
+# #. (A종류의 수+1)*(B종류의 수+1)*... - 1 
+# import sys 
 
-T = int(sys.stdin.readline())
+# T = int(sys.stdin.readline())
 
-for _ in range(T):
-  N = int(sys.stdin.readline())
-  D = {}
-  for _ in range(N):
-    a,b = sys.stdin.readline().strip().split()
-    if b in D:
-      D[b].append(a)
-    else:
-      D[b] = [a]
-  result = 1
-  for key in D:
-    result *= len(D[key])+1
-  result -= 1
+# for _ in range(T):
+#   N = int(sys.stdin.readline())
+#   D = {}
+#   for _ in range(N):
+#     a,b = sys.stdin.readline().strip().split()
+#     if b in D:
+#       D[b].append(a)
+#     else:
+#       D[b] = [a]
+#   result = 1
+#   for key in D:
+#     result *= len(D[key])+1
+#   result -= 1
 
-  print(result)
+#   print(result)
     
 
+
+
+
+
+
+# import sys
+
+# N = int(sys.stdin.readline())
+
+# def factorial(x):
+#   if x > 1 :
+#     return x * factorial(x-1)
+#   else :
+#     return 1
+
+# D = 10
+# r = 1
+# while True:
+#   if factorial(N)%D != 0:
+#     print(r-1)
+#     break
+#   D *= 10
+#   r += 1
+
+
+
+
+import sys
+
+n,m = map(int,sys.stdin.readline().split())
+
+# #. RecursionError: maximum recursion depth exceeded 
+# def factorial(x):
+#   if x > 1 :
+#     return x * factorial(x-1)
+#   else :
+    # return 1
+
+def two_count(x):
+  count = 0
+  while x != 0:
+    x //= 2
+    count += x
+  return count
+
+def five_count(x):
+  count = 0
+  while x != 0:
+    x //= 5
+    count += x
+  return count
+
+#. n! / ((n-m)! * m!)
+
+print(min(two_count(n) - (two_count(n-m) + two_count(m)), five_count(n) - (five_count(n-m) + five_count(m))))
