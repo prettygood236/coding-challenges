@@ -80,17 +80,18 @@ def merge_sort(array,result):
   if len(array) > 1:
     result += array
   return array,result
+  
 
-import sys
-N,K = map(int,sys.stdin.readline().split())
-array = list(map(int,sys.stdin.readline().split()))
-result = []
-array,result = merge_sort(array,result)
+# import sys
+# N,K = map(int,sys.stdin.readline().split())
+# array = list(map(int,sys.stdin.readline().split()))
+# result = []
+# array,result = merge_sort(array,result)
 
-if K <= len(result):
-  print(result[K-1])
-else:
-  print(-1)
+# if K <= len(result):
+#   print(result[K-1])
+# else:
+#   print(-1)
 
 
 
@@ -240,3 +241,14 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 # for i in L :
 #   # print(R.index(i),end=' ') #! index는 O(N)이 걸리기 때문에 O(N^2)으로 시간복잡도를 초과하게 된다.
 #   print(dic_R[i], end=' ')  
+
+
+
+
+
+L = [int(input()) for _ in range(5)]
+
+L.sort()
+
+print(sum(L)//5)
+print(L[2])

@@ -127,21 +127,42 @@
 # 직사각형 구역. (X <= x and Y <= y) and (X+W >= x and Y+H >= y) 이면 링크 안 또는 경계에 있다.
 # 왼쪽 반원 구역.  R = H/2 , (X-x)**2 + ((Y+R)-y)**2  <= R**2  
 # 오른쪽 반원 구역.  R = H/2 , ((X+W)-x)**2 + ((Y+R)-y)**2  <= R**2  
-import sys
-W,H,X,Y,P = map(int,sys.stdin.readline().split())
-R = H/2
+# import sys
+# W,H,X,Y,P = map(int,sys.stdin.readline().split())
+# R = H/2
+# count = 0
+
+# for _ in range(P):
+#   x,y = map(int,sys.stdin.readline().split())
+#   if (X <= x and Y <= y) and (X+W >= x and Y+H >= y):
+#     count += 1
+#     continue
+#   if ((X-x)**2 + ((Y+R)-y)**2  <= R**2):
+#     count += 1
+#     continue
+#   if (((X+W)-x)**2 + ((Y+R)-y)**2  <= R**2):
+#     count += 1
+#     continue
+
+# print(count)
+
+
+
+
+#. 좌표에서 겹치는 부분이 있는 넓이를 구하는 방식. 
+#. 미분의 아이디어.
+N = int(input())
+R = [[0 for _ in range(101)] for _ in range(101)]
 count = 0
 
-for _ in range(P):
-  x,y = map(int,sys.stdin.readline().split())
-  if (X <= x and Y <= y) and (X+W >= x and Y+H >= y):
-    count += 1
-    continue
-  if ((X-x)**2 + ((Y+R)-y)**2  <= R**2):
-    count += 1
-    continue
-  if (((X+W)-x)**2 + ((Y+R)-y)**2  <= R**2):
-    count += 1
-    continue
+for _ in range(N):
+  a,b = map(int, input().split())
+
+  for i in range(a,a+10):
+    for j in range(b,b+10):
+      if R[i][j] == 0:
+        R[i][j] = 1
+        count += 1
 
 print(count)
+    
