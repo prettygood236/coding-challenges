@@ -26,48 +26,48 @@
 
 
 # Sieve of Eratosthenes
-def prime_list(n):
-  sieve = [True]*n
+# def prime_list(n):
+#   sieve = [True]*n
 
-  m = int(n ** 0.5)
-  for i in range(2, m+1):
-    if sieve[i] == True:
-      for j in range(i+i,n,i):
-        sieve[j] = False
+#   m = int(n ** 0.5)
+#   for i in range(2, m+1):
+#     if sieve[i] == True:
+#       for j in range(i+i,n,i):
+#         sieve[j] = False
 
-  return [i for i in range(2,n) if sieve[i] == True]
+#   return [i for i in range(2,n) if sieve[i] == True]
 
-print(prime_list(62)) # 62보다 작은 자연수 중 소수의 리스트 출력.
+# print(prime_list(62)) # 62보다 작은 자연수 중 소수의 리스트 출력.
 
 
 
 # M <= 요 사이 소수 구하기 <= N
-import sys
+# import sys
 
-def prime_list(n):
-  sieve = [True]*n
+# def prime_list(n):
+#   sieve = [True]*n
 
-  m = int(n ** 0.5)
-  for i in range(2,m+1):
-    if sieve[i] == True:
-      for j in range(i+i,n,i):
-        sieve[j] = False
+#   m = int(n ** 0.5)
+#   for i in range(2,m+1):
+#     if sieve[i] == True:
+#       for j in range(i+i,n,i):
+#         sieve[j] = False
   
-  return [i for i in range(2,n) if sieve[i] == True]
+#   return [i for i in range(2,n) if sieve[i] == True]
        
-M = int(sys.stdin.readline())
-N = int(sys.stdin.readline())
+# M = int(sys.stdin.readline())
+# N = int(sys.stdin.readline())
 
-Ml = prime_list(M)
-Nl = prime_list(N+1)
+# Ml = prime_list(M)
+# Nl = prime_list(N+1)
 
-complement = list(set(Nl)-set(Ml))
+# complement = list(set(Nl)-set(Ml))
 
-if len(complement) == 0:
-  print(-1)
-else:
-  print(sum(complement))
-  print(complement[0])
+# if len(complement) == 0:
+#   print(-1)
+# else:
+#   print(sum(complement))
+#   print(complement[0])
 
 
 
