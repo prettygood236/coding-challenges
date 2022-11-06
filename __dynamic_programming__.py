@@ -172,18 +172,48 @@
 
 
 n = int(input())
-l = [n]
-t = [0]
+l = [0]*1000001
+val = 1
+cal = 1
+count = 0
 
 while True:
-  for i in range(len(l)):
-  n = l.pop()
-  if n == 1:
+  if n==1 or l[n]:
+    # print('111111111111')
+    print(l[n])
     break
-  if n % 3 == 0:
-    a = n // 3
-    t += 1
-  if n % 2 == 0:
-    b = n // 2
-    t += 1
-  c = n-1
+  cal = val
+  while cal < 1000000:
+    # print('222222222222')
+    l[cal] = count
+    cal *= 2
+    count += 1
+  count = 0
+  cal = val
+  while cal < 1000000:
+    # print('3333333333333')
+    l[cal] = count
+    l[cal_plus_1] = count_cal_plus_1
+    cal *= 3
+    count += 1
+    cal_plus_1 = cal + 1
+    count_cal_plus_1 = count + 1
+  count = 0
+  while l[val] != 0:
+    # print('4444444444444')
+    val += 1
+  cal = val
+
+
+  # if cal % 2 == 0:
+  #   # print('5555555555')
+  #   cal = cal // 2
+  #   count += 1
+
+  # if cal % 3 == 0:
+  #   # print('666666666666')
+  #   cal = cal // 2
+  #   count += 1
+
+
+
