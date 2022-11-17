@@ -171,49 +171,148 @@
 
 
 
-n = int(input())
-l = [0]*1000001
-val = 1
-cal = 1
-count = 0
+# n = int(input())
+# l = [0] * (n+1)
 
-while True:
-  if n==1 or l[n]:
-    # print('111111111111')
-    print(l[n])
-    break
-  cal = val
-  while cal < 1000000:
-    # print('222222222222')
-    l[cal] = count
-    cal *= 2
-    count += 1
-  count = 0
-  cal = val
-  while cal < 1000000:
-    # print('3333333333333')
-    l[cal] = count
-    l[cal_plus_1] = count_cal_plus_1
-    cal *= 3
-    count += 1
-    cal_plus_1 = cal + 1
-    count_cal_plus_1 = count + 1
-  count = 0
-  while l[val] != 0:
-    # print('4444444444444')
-    val += 1
-  cal = val
+# for i in range(2,n+1):
+#   l[i] = l[i-1]+1
+
+#   if i % 2 == 0:
+#     l[i] = min(l[i//2]+1,l[i])
+
+#   if i % 3 == 0:
+#     l[i] = min(l[i//3]+1,l[i])
+
+# print(l[n])
 
 
-  # if cal % 2 == 0:
-  #   # print('5555555555')
-  #   cal = cal // 2
-  #   count += 1
 
-  # if cal % 3 == 0:
-  #   # print('666666666666')
-  #   cal = cal // 2
-  #   count += 1
+
+
+
+
+# n = int(input())
+
+# dp = [[0]*10 for _ in range(n+1)]
+# dp[0] = []
+# for i in range(1,10):
+#   dp[1][i] = 1
+
+# mod = 1000000000
+
+# for i in range(2,n+1):
+#   for j in range(10):
+#     if j == 0:
+#       dp[i][j] = dp[i-1][1]
+#     elif j == 9:
+#       dp[i][j] = dp[i-1][8]
+#     else:
+#       dp[i][j] = dp[i-1][j-1] + dp[i-1][j+1]
+
+# print(sum(dp[n])%mod)
+
+
+
+
+
+
+# n = int(input())
+# l = [[] for _ in range(n)] 
+
+# for i in range(n):
+#   t = int(input())
+#   if i == 0 :
+#     l[0].append(t)
+#   if i == 1:
+#     l[1].append(l[0][0])
+#     l[1].append(t)
+#     l[1].append(l[0][0]+t)
+#   if i >= 2:
+#     l[i].append(max(l[i-1]))
+#     l[i].append(max(l[i-2])+t)
+#     l[i].append(l[i-1][1]+t)
+
+# print(max(l[-1]))
+
+
+
+
+
+
+#* LIS (Longest Increasing Subsequence) 가장 긴 증가하는 부분수열
+
+
+#. 시간복잡도 O(N^2)의 해결법
+# N = int(input())
+# A = list(map(int,input().split()))
+# D = [0] * N
+
+# for i in range(N):
+#   D[i] = 1
+#   for j in range(i):
+#     if A[i] > A[j]:
+#       D[i] = max(D[i],D[j]+1)
+    
+# print(max(D))
+
+
+#. 시간복잡도 O(NlogN)의 해결법
+
+# 세그먼트 트리 배우고 다시 해보도록 하겠다.
+
+
+
+
+
+# from itertools import chain
+# n = int(input())
+# a = list(map(int,input().split()))
+# dp = [[0,0] for _ in range(n)]
+
+# for i in range(n):
+#   dp[i][0] = 1
+#   dp[i][1] = 1
+#   for j in range(i):
+#     if a[i] > a[j]:
+#       dp[i][0] = max(dp[i][0],dp[j][0]+1)
+#     if a[j] > a[i]:
+#       dp[i][1] = max(dp[i][1],dp[j][0]+1,dp[j][1]+1)
+
+# print(max(list(chain(*dp)))) 
+
+
+
+
+
+# n = int(input())
+# a = [list(map(int,input().split())) for _ in range(n)]
+# a.sort()
+# dp = [0] * n
+
+# for i in range(n):
+#   dp[i] = 1
+#   for j in range(i):
+#     if a[i][1] > a[j][1]:
+#       dp[i] = max(dp[i],dp[j]+1)
+
+# print(n-max(dp))
+
+
+
+
+
+#* LCS (Longest Common Subsequence) 가장 긴 공통 부분 수열
+
+a = input()
+b = input()
+n = min(len(a),len(b))
+dp = [0] * n
+
+for i in range(b):
+  for j in range(a):
+    if a[j] == b[i]:
+      dp[i] += 1
+
 
 
 
