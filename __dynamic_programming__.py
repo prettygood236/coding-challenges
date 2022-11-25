@@ -303,16 +303,41 @@
 
 #* LCS (Longest Common Subsequence) 가장 긴 공통 부분 수열
 
-a = input()
-b = input()
-n = min(len(a),len(b))
-dp = [0] * n
+# x = input()
+# y = input()
+# dp = [[0] * (len(y)+1) for _ in range(len(x)+1)]
 
-for i in range(b):
-  for j in range(a):
-    if a[j] == b[i]:
-      dp[i] += 1
+# for i in range(1,len(x)+1):
+#   for j in range(1,len(y)+1):
+#     if x[i-1] == y[j-1]:
+#       dp[i][j] = dp[i-1][j-1] + 1
+#     else :
+#       dp[i][j] = max(dp[i-1][j],dp[i][j-1])
+
+# print(dp[-1][-1])
 
 
 
 
+
+#* Napsack Problem
+
+n, k = map(int,input().split())
+wt = []
+v = []
+for _ in range(n):
+  a,b = map(int,input().split())
+  wt.append(a)
+  v.append(b)
+
+def knapSack(W, wt, v, n):
+    dp = [0 for _ in range(W+1)] 
+    for i in range(1, n+1): 
+      for w in range(W, 0, -1): 
+        if wt[i-1] <= w:
+          dp[w] = max(dp[w], dp[w-wt[i-1]]+v[i-1])
+ 
+    return dp[W]  
+
+
+print(knapSack(k, wt, v, n))
