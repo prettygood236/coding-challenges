@@ -1,3 +1,11 @@
+def solution(strings, n):
+  strings = ["abce", "abcd", "cdx"]	
+  n = 2
+  answer = []
+  answer = sorted(strings, key = lambda x: (x[n],x))
+  return answer
+
+
 def bubble_sort(array):
   for i in range(len(array)):
     swapped = False
