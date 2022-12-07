@@ -225,37 +225,61 @@
 
 
 
-N = int(input())
-l = list(list(map(int,input().split())) for _ in range(N))
-t = []
-team_s = []
-team_l = []
-choice = []
-temp = set(i for i in range(N))
-R = []
+# N = int(input())
+# l = list(list(map(int,input().split())) for _ in range(N))
+# t = []
+# team_s = []
+# team_l = []
+# choice = []
+# temp = set(i for i in range(N))
+# R = []
 
-def combination(N,M,L):
-  if len(t) == M:
-    L.append(t[:])  
-    return
-  else:
-    for i in range(N):
-      if i not in t :
-        if len(t) == 0 or t[-1] < i: #. 0 1과 1 0을 중복으로 보는 조건.  
-          t.append(i)
-          combination(N,M,L)
-          t.pop()
+# def combination(N,M,L):
+#   if len(t) == M:
+#     L.append(t[:])  
+#     return
+#   else:
+#     for i in range(N):
+#       if i not in t :
+#         if len(t) == 0 or t[-1] < i: #. 0 1과 1 0을 중복으로 보는 조건.  
+#           t.append(i)
+#           combination(N,M,L)
+#           t.pop()
 
-combination(N,N//2,team_s)
-for i in team_s:
-  team_l.append(list(temp - set(i)))
-combination(N//2,2,choice)
-for i in range(len(team_s)):
-  sum_s = 0
-  sum_l = 0
-  for j in range(len(choice)):
-    sum_s += l[team_s[i][choice[j][0]]][team_s[i][choice[j][1]]] + l[team_s[i][choice[j][1]]][team_s[i][choice[j][0]]]
-    sum_l += l[team_l[i][choice[j][0]]][team_l[i][choice[j][1]]] + l[team_l[i][choice[j][1]]][team_l[i][choice[j][0]]]
-  R.append(abs(sum_s-sum_l))
+# combination(N,N//2,team_s)
+# for i in team_s:
+#   team_l.append(list(temp - set(i)))
+# combination(N//2,2,choice)
+# for i in range(len(team_s)):
+#   sum_s = 0
+#   sum_l = 0
+#   for j in range(len(choice)):
+#     sum_s += l[team_s[i][choice[j][0]]][team_s[i][choice[j][1]]] + l[team_s[i][choice[j][1]]][team_s[i][choice[j][0]]]
+#     sum_l += l[team_l[i][choice[j][0]]][team_l[i][choice[j][1]]] + l[team_l[i][choice[j][1]]][team_l[i][choice[j][0]]]
+#   R.append(abs(sum_s-sum_l))
 
-print(min(R))
+# print(min(R))
+
+
+
+
+
+
+
+
+
+w = input()
+vowels = ['A','E','I','O','U']
+answer = []
+
+def dfs(word):
+  for i in range(len(vowels)):
+    word = word + vowels[i]
+    if len(word) > 5:
+      return
+    answer.append(word)  #! 넣고!
+    dfs(word) #! 돌리고!
+    word = word[:-1] #! 뺴고! #?
+
+dfs('')
+print(answer.index(w)+1)
