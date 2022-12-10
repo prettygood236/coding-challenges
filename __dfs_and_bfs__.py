@@ -27,14 +27,7 @@
 # # board = [[0,0,1,0],[0,0,0,0],[0,1,0,1],[1,0,0,0]]	
 # # 3200
 # board = [[0,0,0,0,0,0],[0,1,1,1,1,0],[0,0,1,0,0,0],[1,0,0,1,0,1],[0,1,0,0,0,1],[0,0,0,0,0,0]]	
-# # right down left up
-# dy = [0,1,0,-1]  
-# dx = [1,0,-1,0]
-# n = len(board)
-# dp = [[[int(1e9)]*n for x in range(n)] for y in range(n)]
-# for i in range(4):
-#   dp[0][0][i] = 0 
-# # print(dp)
+
 
 # def bfs(y,x):
 #     n = len(board)
@@ -45,6 +38,9 @@
 #     dir = -1
 #     cost = 0
 #     queue.append((0,0,dir,cost))
+# # right down left up
+#     dy = [0,1,0,-1]  
+#     dx = [1,0,-1,0]
 #     while queue:
 #         y,x,dir,cost = queue.popleft()
 #         for i in range(4):
