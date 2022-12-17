@@ -52,21 +52,43 @@
 
 
 
+# N,M = map(int,input().split())
+# data = list(map(int,input().split()))
+# prefix_sum = [0]
+# r = [0]*M
+
+# for i in range(len(data)):
+#   sum = prefix_sum[i]+data[i]
+#   prefix_sum.append(sum)
+#   r[sum%M] += 1
+
+# count = r[0]
+
+# for i in range(len(r)):
+#   count += r[i]*(r[i]-1)//2
+
+# print(count)
+
+
+
+
+
+
+
+
 N,M = map(int,input().split())
-data = list(map(int,input().split()))
-prefix_sum = [0]
-r = [0]*M
+data = []
+for _ in range(N):
+  data.append(list(map(int,input().split())))
 
-for i in range(len(data)):
-  sum = prefix_sum[i]+data[i]
-  prefix_sum.append(sum)
-  r[sum%M] += 1
+prefix_sum = [[0] for _ in range(N)]
 
-count = r[0]
+for i in range(N):
+  for j in range(N):
+    if i == 0:
+      sum = prefix_sum[i][j] + data[i][j]
+    else :
+      sum = prefix_sum[i-1][j] + prefix_sum[i][j] + data[i][j]
+    prefix_sum[i].append(sum)
 
-for i in range(len(r)):
-  count += r[i]*(r[i]-1)//2
-
-print(count)
-
-
+print(prefix_sum)
