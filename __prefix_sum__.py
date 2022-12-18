@@ -77,18 +77,22 @@
 
 
 N,M = map(int,input().split())
-data = []
+data = [[0 for _ in range(N)]]
 for _ in range(N):
   data.append(list(map(int,input().split())))
 
-prefix_sum = [[0] for _ in range(N)]
+prefix_sum = [[0 for _ in range(N+1)] for _ in range(N+1)]
 
-for i in range(N):
-  for j in range(N):
-    if i == 0:
-      sum = prefix_sum[i][j] + data[i][j]
-    else :
-      sum = prefix_sum[i-1][j] + prefix_sum[i][j] + data[i][j]
-    prefix_sum[i].append(sum)
+for i in range(1,N+1):
+  for j in range(1,N+1):
+    sum = prefix_sum[i][j-1] + data[i][j-1] + data[i-1][j-1]
+    prefix_sum[i][j] = sum
 
-print(prefix_sum)
+for _ in range(M):
+  x1,y1,x2,y2= map(int,input().split())
+  result = prefix_sum[y2][x2] - prefix_sum[y2][x1-1] - prefix_sum[y1-1][x2] + prefix_sum[y1-1][x1-1]
+  print('\n')
+  print(result)
+
+
+
