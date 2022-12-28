@@ -33,22 +33,23 @@
 
 #- <Human-Computer interaction>
 #. 아 왜 50점이야 아
-import copy
-S = input()
-L = [{'a':0, 'b':0, 'c':0, 'd':0,'e':0, 'f':0, 'g':0, 'h':0,'i':0, 'j':0, 'k':0, 'l':0, 'm':0, 'n':0, 'o':0,'p':0,'q':0,'r':0,'s':0,'t':0,'u':0, 'v':0, 'w':0,'x':0, 'y':0, 'z':0} for _ in range(len(S))]
-L[0][S[0]] = 1
+S = input().strip()
+L = [[0 for _ in range(26)] for _ in range(len(S))]
+L[0][ord(S[0]) - 97] = 1
 
-for i in range(1,len(S)):
-  L[i] = copy.deepcopy(L[i-1])
-  L[i][S[i]] += 1
+for i in range(1, len(S)):
+  L[i][ord(S[i]) - 97] = 1
+  for j in range(26):
+    L[i][j] += L[i - 1][j]
 
 for i in range(int(input())):
-  a,l,r = input().split()
-  l,r = map(int,[l,r])
+  a, l, r = input().split()
+  l, r = map(int, [l, r])
+  print(l,r)
+  result = L[r][ord(a)-97] - L[l-1][ord(a)-97]
   if l == 0:
-    print(L[r][a])
-    continue
-  print(L[r][a]-L[l-1][a])
+    result = L[r][ord(a)-97]
+  print(result)
 
 
 
@@ -83,7 +84,7 @@ for i in range(int(input())):
 
 # table = []
 # for i in range(n):
-    # table.append(list(map(int, input().split())))
+#     table.append(list(map(int, input().split())))
 
 # prefix_sums = [[0 for _ in range(n+1)] for _ in range(n+1)]
 # for i in range(1,n+1):
@@ -99,6 +100,34 @@ for i in range(int(input())):
 
 
 #- <Repaint the chessboard 2>
+
+# import sys
+
+# def find_min(color):
+#   new_board = [[0 for _ in range(m)] for _ in range(n)]
+#   for i in range(n):
+#     for j in range(m):
+#       if (i+j) % 2 == 0 and board[i][j] != color:
+#         new_board[i][j] = 1
+#       if (i+j) % 2 != 0 and board[i][j] == color:
+#         new_board[i][j] = 1
+
+#   prefix_sum = [[0 for _ in range(m+1)] for _ in range(n+1)]
+#   for i in range(1,n+1):
+#     for j in range(1,m+1):
+#       prefix_sum[i][j] = prefix_sum[i-1][j] + prefix_sum[i][j-1] - prefix_sum[i-1][j-1] + new_board[i-1][j-1]
+
+#   result = sys.maxsize
+#   for i in range(n-k+1): 
+#     for j in range(m-k+1):
+#       result = min(result, prefix_sum[k+i][k+j] - prefix_sum[k+i][j] - prefix_sum[i][k+j] + prefix_sum[i][j])
+  
+#   return result
+
+# n, m, k = map(int,input().split())
+# board = [list(input()) for _ in range(n)]
+# print(min(find_min('B'),find_min('W')))
+
 
 
 
