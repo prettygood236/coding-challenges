@@ -32,8 +32,11 @@
 
 
 #- <Human-Computer interaction>
-#. 아 왜 50점이야 아
-S = input().strip()
+#! sys.stdin.readline 은 input과 달리 한줄을 한번에 버퍼에 저장하고, (input은 입력할때마다 저장)
+#! prompt message를 받아 출력하는 기능이 없기 때문에 속도가 더 빠르다. 
+import sys
+S = sys.stdin.readline().strip()
+N = int(sys.stdin.readline())
 L = [[0 for _ in range(26)] for _ in range(len(S))]
 L[0][ord(S[0]) - 97] = 1
 
@@ -42,14 +45,14 @@ for i in range(1, len(S)):
   for j in range(26):
     L[i][j] += L[i - 1][j]
 
-for i in range(int(input())):
-  a, l, r = input().split()
-  l, r = map(int, [l, r])
-  print(l,r)
-  result = L[r][ord(a)-97] - L[l-1][ord(a)-97]
+for i in range(N):
+  a,l,r = sys.stdin.readline().split()
+  l,r = map(int, [l,r])
+  result = L[r][ord(a) - 97] - L[l - 1][ord(a) - 97]
   if l == 0:
-    result = L[r][ord(a)-97]
+    result = L[r][ord(a) - 97]
   print(result)
+
 
 
 
