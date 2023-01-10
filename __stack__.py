@@ -66,45 +66,66 @@
 
 
 #- <VPS 2>
-import sys
-while True:
-  data = list(sys.stdin.readline().rstrip())
-  if len(data) == 1 and data[0] == '.':
-    break
-  l = []
-  flag = True
-  for i in range(len(data)):
-    a = data.pop()
-    if a == '(':
-      if l:
-        b = l.pop()
-        if b != ')':
-          print('NO')
-          flag = False
-          break
-      else:
-        print('NO')
-        flag = False
-        break
+# import sys
+# while True:
+#   s = sys.stdin.readline().rstrip()
+  
+#   if s == '.':
+#     break
+
+#   flag = True
+#   l = []
+#   for i in s:
+#     if i == '(' or i == '[':
+#       l.append(i)
+#       continue
     
-    if a == '[':
-      if l:
-        b = l.pop()
-        if b != ']':
-          print('NO')
-          flag = False
-          break
-      else:
-        print('NO')
-        flag = False
-        break
+#     if i == ')' or i == ']':
+#       if not l:
+#         flag = False
+#         break
 
-    if a == ')' or a ==']':
-      l.append(a)
+#       else:
+#         a = l.pop()
+#         if (i == ')' and a == '(') or (i == ']' and a =='['):
+#           continue
+#         else :
+#           flag = False
+#           break
+  
+#   if not l and flag:
+#     print('yes')
+#     continue
+#   print('no')
 
-  if not(flag):
-    continue 
-  if data or l:
-    print('NO')
-    continue
-  print('YES')
+
+
+
+#- <Stack Sequence>
+import sys
+n = int(sys.stdin.readline())
+l = [int(sys.stdin.readline()) for _ in range(n)]
+
+count = 0
+stack = []
+result = []
+flag = True
+for num in l:
+  while True:
+    if count >= num:
+      break
+    count += 1
+    result.append('+')
+    stack.append(count)
+  if stack[-1] == num:
+    result.append('-')
+    stack.pop()
+  else :
+    flag = False
+    break
+
+if flag == False:
+  print('NO')
+else :
+  for i in result:
+    print(i)
