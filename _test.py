@@ -1,7 +1,5 @@
+import sys
 
+l = sys.stdin.readline().split('')
 
-a = 'a'
-
-a += 'b'
-
-print(a)
+print(l)
