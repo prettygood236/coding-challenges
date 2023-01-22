@@ -1,8 +1,5 @@
-import sys
+n,t,m = map(int,'10	60	45'.split())
 
+a = '08:40'
 
-l = sys.stdin.readline().strip('[]\n ').split(',')
-
-a = len(l)
-
-print(l,a)
+print(int(a))
