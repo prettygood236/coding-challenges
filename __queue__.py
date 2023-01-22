@@ -159,38 +159,28 @@ T = int(sys.stdin.readline())
 for _ in range(T):
   p = sys.stdin.readline().strip()
   n = int(sys.stdin.readline())
-  l = deque(list(sys.stdin.readline().strip()))
+  l = deque(sys.stdin.readline().strip('[]\n ').split(',').remove(''))
   flag = True
+  reverse = False
 
   for i in p:
     if i == 'R':
-      l.reverse()
-      # print('11111111111')
-      # print(l)
+      reverse = not reverse
     if i == 'D':
-      if len(l) == 2:
-        print('error')
+      if not l:
         flag = False
-        # print('22222222')
-        # print(l)
-      elif len(l) == 3:
-        l.popleft()
-        l.popleft()
-        l.appendleft('[')
-        # print('3333333')
-        # print(l)
-      elif len(l) > 3:
-        l.popleft()
-        l.popleft()
-        l.popleft()  
-        l.appendleft('[')
-        # print('444444444')
-        # print(l)
+        break
+      else:
+        if reverse:
+          l.pop()
+        else:
+          l.popleft()
   
   if flag:
-    result = list(l)
-    result[0] = '['
-    result[-1] = ']'
-    print(''.join(result))
+    if reverse:
+      l.reverse()
+    print('['+','.join(l)+']')
+  else:
+    print('error')
 
 
