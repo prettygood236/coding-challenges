@@ -1,5 +1,4 @@
-n,t,m = map(int,'10	60	45'.split())
+print(4999//5)
+print(4999%999)
 
-a = '08:40'
-
-print(int(a))
+n = n%(n//count)

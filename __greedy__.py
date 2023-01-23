@@ -69,7 +69,7 @@ costs = list(map(int,sys.stdin.readline().split()))
 
 value = costs[0]
 result = 0
-for i in range(1,n-1):
+for i in range(n-1):
   if costs[i] < value:
     value = costs[i]
   result += value * distances[i]

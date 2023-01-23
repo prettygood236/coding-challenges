@@ -38,6 +38,6 @@ while count < 1000000 :
   count += 1
   if len(l) == 100:
     success += 1
-probablity = (success / count)*100
+probablity = (success/count)*100
 print(probablity,'%')
     
