@@ -77,7 +77,24 @@
 
 
 #- <Printer Queue>
+import sys
+from collections import deque
+for _ in range(int(sys.stdin.readline())):
+  N,M = map(int,sys.stdin.readline().split())
+  L = list(map(int,sys.stdin.readline().split()))
+  mx = max(L)
+  dq = deque(L)
+  if N == 1:
+    print(1)
+    continue
+  for i in range(N):
+    if L[i] != mx:
+      print('1')
+      dq.rotate(-1)
+  print(L[M])
+  print(dq)
 
+  
 
 
 
@@ -152,35 +169,35 @@
 
 
 #- <Integer Lists>
-import sys
-from collections import deque
-T = int(sys.stdin.readline())
+# import sys
+# from collections import deque
+# T = int(sys.stdin.readline())
 
-for _ in range(T):
-  p = sys.stdin.readline().strip()
-  n = int(sys.stdin.readline())
-  l = deque(sys.stdin.readline().strip('[]\n ').split(',').remove(''))
-  flag = True
-  reverse = False
+# for _ in range(T):
+#   p = sys.stdin.readline().strip()
+#   n = int(sys.stdin.readline())
+#   l = deque(sys.stdin.readline().strip('[]\n ').split(',').remove(''))
+#   flag = True
+#   reverse = False
 
-  for i in p:
-    if i == 'R':
-      reverse = not reverse
-    if i == 'D':
-      if not l:
-        flag = False
-        break
-      else:
-        if reverse:
-          l.pop()
-        else:
-          l.popleft()
+#   for i in p:
+#     if i == 'R':
+#       reverse = not reverse
+#     if i == 'D':
+#       if not l:
+#         flag = False
+#         break
+#       else:
+#         if reverse:
+#           l.pop()
+#         else:
+#           l.popleft()
   
-  if flag:
-    if reverse:
-      l.reverse()
-    print('['+','.join(l)+']')
-  else:
-    print('error')
+#   if flag:
+#     if reverse:
+#       l.reverse()
+#     print('['+','.join(l)+']')
+#   else:
+#     print('error')
 
 
