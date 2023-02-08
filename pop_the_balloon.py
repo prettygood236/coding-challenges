@@ -4,6 +4,7 @@ def solution(a):
   dq = deque(a)
   for i in range(len(dq)-1):
     dq.remove(min(dq[i],dq[i+1]))
+                 
   return
 
 a = [9,-1,-5]	# 3
