@@ -77,25 +77,28 @@
 
 
 #- <Printer Queue>
-import sys
-from collections import deque
-for _ in range(int(sys.stdin.readline())):
-  N,M = map(int,sys.stdin.readline().split())
-  L = list(map(int,sys.stdin.readline().split()))
-  mx = max(L)
-  dq = deque(L)
-  if N == 1:
-    print(1)
-    continue
-  for i in range(N):
-    if L[i] != mx:
-      print('1')
-      dq.rotate(-1)
-  print(L[M])
-  print(dq)
+# import sys
+# from collections import deque 
 
-  
+# for _ in range(int(sys.stdin.readline())):
+#   n,m = map(int,sys.stdin.readline().split())
+#   l = list(map(int,sys.stdin.readline().split()))
+#   for i in range(len(l)):
+#     l[i] = [l[i],False]
+#   l[m][1] = True
+#   queue = deque(l)
+#   count = 1
+#   while True:
+#     max_v = max(queue)[0]
+#     if queue[0][1] and queue[0][0] == max_v:
+#       break
+#     elif queue[0][0] == max_v:
+#       queue.popleft()
+#       count += 1
+#     else :
+#       queue.rotate(-1)
 
+#   print(count)
 
 
 
@@ -169,35 +172,35 @@ for _ in range(int(sys.stdin.readline())):
 
 
 #- <Integer Lists>
-# import sys
-# from collections import deque
-# T = int(sys.stdin.readline())
+import sys
+from collections import deque
+T = int(sys.stdin.readline())
 
-# for _ in range(T):
-#   p = sys.stdin.readline().strip()
-#   n = int(sys.stdin.readline())
-#   l = deque(sys.stdin.readline().strip('[]\n ').split(',').remove(''))
-#   flag = True
-#   reverse = False
+for _ in range(T):
+  p = sys.stdin.readline().strip()
+  n = int(sys.stdin.readline())
+  q = deque(sys.stdin.readline().strip('[]\n ').split(','))
+  flag = True
+  reverse = False
 
-#   for i in p:
-#     if i == 'R':
-#       reverse = not reverse
-#     if i == 'D':
-#       if not l:
-#         flag = False
-#         break
-#       else:
-#         if reverse:
-#           l.pop()
-#         else:
-#           l.popleft()
+  for i in p:
+    if i == 'R':
+      reverse = not reverse
+    if i == 'D':
+      if not q or q[0] == '':
+        flag = False
+        break
+      else:
+        if reverse:
+          q.pop()
+        else:
+          q.popleft()
   
-#   if flag:
-#     if reverse:
-#       l.reverse()
-#     print('['+','.join(l)+']')
-#   else:
-#     print('error')
+  if flag:
+    if reverse:
+      q.reverse()
+    print('['+','.join(q)+']')
+  else:
+    print('error')
 
 

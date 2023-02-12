@@ -1,4 +1,7 @@
-print(4999//5)
-print(4999%999)
 
-n = n%(n//count)
+import sys
+
+l = []
+for i in range(8):
+  l.append(list(map(int,sys.stdin.readline().split())))
+print(l)
