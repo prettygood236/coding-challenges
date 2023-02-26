@@ -1,7 +1,9 @@
+lines = []
+while True:
+    line = input().rstrip()
+    if line:
+        lines.append(line)
+    else:
+        break
 
-import sys
-
-l = []
-for i in range(8):
-  l.append(list(map(int,sys.stdin.readline().split())))
-print(l)
+print(*lines,sep='\n')
