@@ -15,7 +15,6 @@
 
 
 
-
 # import sys
 # cnt = int(sys.stdin.readline())
 # L = list(map(int,sys.stdin.readline().split()))
@@ -44,6 +43,27 @@
 # print(L)
 
 
+
+
+#. <Perfect Number>
+# while True:
+#   n = int(input())
+#   if n == -1:
+#     break
+#   l = []
+#   t = 0
+#   for i in range(1, n):
+#     if n % i == 0:
+#       t += i
+#       l.append(i)
+#   if t == n:
+#     print(n, '= ', end='')
+#     print(*l,sep=' + ')
+#   else:
+#     print(
+#       n,
+#       'is NOT perfect.',
+    # )
 
 
 #* Euclidean algorithm(유클리드 호제법)
