@@ -1,20 +1,21 @@
 from datetime import datetime, timedelta
 
 def count_max_overlap(timelines):
-    sort_by_start_time(timelines)
     breakpoint()
-    current_end_time = 0
+    sort_by_start_time(timelines)
+    current_end_time = timelines[0][0].timestamp() + 1
     max_overlap = 0
     current_overlap = 0
     
     for timeline in timelines:
         if timeline[0].timestamp() > current_end_time:
             current_overlap = 1
+            current_end_time = timeline[0].timestamp() + 1
         else:
             current_overlap += 1
         
         max_overlap = max(max_overlap, current_overlap)
-        current_end_time = max(current_end_time, timeline[1].timestamp())
+        # current_end_time = max(current_end_time, timeline[1].timestamp())
     
     return max_overlap
 
