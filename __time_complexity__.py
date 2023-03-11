@@ -61,19 +61,36 @@
 #     return sum;
 # }
 
-n = int(input())
-c = 0
-for i in range(1,n-1):
-    c += (n-(i+1)) * (n+1-((n-(i+1))+1))
+
+# n = int(input())
+# count = 0
+
+# # for i in range(1,n-1):
+# #     for j in range(i+1,n):
+# #         for k in range(j+1,n+1):
+# #             count += 1
+
+# for i in range(1,n):
+#     count += (n-(i)) * (n-(i+1))
+
+# count //= 2
+
+# print(count)
+# print(3)
 
 
 
-# for i in range(1,n-1):
-#     print(c,'1')
-#     for j in range(i+1,n):
-#         print(c,'2')
-#         for k in range(j+1,n+1):
-#             c += 1
 
-print(c)
-print(3)
+a1,a0 = map(int,input().split())
+c = int(input())
+n0 = int(input())
+flag = 1
+
+for i in range(n0,100):
+    if(a1*i+a0 <= c*i):
+        continue
+    else:
+        flag = 0
+        break
+
+print(flag)
