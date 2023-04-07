@@ -39,34 +39,58 @@
 
 
 #. BAEKJOON 9063. <Ground>
-import sys
-n = int(sys.stdin.readline())
-min_x, min_y = 10000,10000
-max_x, max_y = -10000,-10000
-for _ in range(n):
-  x,y = map(int,sys.stdin.readline().split())
-  min_x = min(min_x,x)
-  min_y = min(min_y,y)
-  max_x = max(max_x,x)
-  max_y = max(max_y,y)
+# import sys
+# n = int(sys.stdin.readline())
+# min_x, min_y = 10000,10000
+# max_x, max_y = -10000,-10000
+# for _ in range(n):
+#   x,y = map(int,sys.stdin.readline().split())
+#   min_x = min(min_x,x)
+#   min_y = min(min_y,y)
+#   max_x = max(max_x,x)
+#   max_y = max(max_y,y)
 
-w = abs(max_x - min_x)
-h = abs(max_y - min_y)
-result = w*h
+# w = abs(max_x - min_x)
+# h = abs(max_y - min_y)
+# result = w*h
 
-print(w*h)
+# print(w*h)
 
 
 
 #. BAEKJOON 9063. <Triangle Times>
-a = int(input())
-b = int(input())
-c = int(input())
-if a==60 and a==b and b==c:
-  print('Equilateral')
-elif a+b+c==180 and (a==b or b==c or a==c):
-  print('Isosceles')
-elif a+b+c==180 and (a!=b and b!=c and a!=c):
-  print('Scalene')
-elif a+b+c!=180:
-  print('Error')
+# a = int(input())
+# b = int(input())
+# c = int(input())
+# if a==60 and a==b and b==c:
+#   print('Equilateral')
+# elif a+b+c==180 and (a==b or b==c or a==c):
+#   print('Isosceles')
+# elif a+b+c==180 and (a!=b and b!=c and a!=c):
+#   print('Scalene')
+# elif a+b+c!=180:
+#   print('Error')
+
+
+
+
+#. BAEKJOON 5073. <Triangles>
+while True:
+  l = list(map(int,input().split()))
+  l.sort()
+  a = l[2]
+  b = l[1]
+  c = l[0]
+  if a==0 and b==0 and c==0:
+    break
+  if a==b and b==c:
+    print('Equilateral')
+    continue
+  if a==b or b==c or a==c:
+    print('Isosceles')
+    continue
+  if a >= b+c:
+    print('Invalid')
+    continue
+  if a!=b and b!=c and a!=c:
+    print('Scalene')

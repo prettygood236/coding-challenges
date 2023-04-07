@@ -32,14 +32,19 @@
 
 
 #. BAEKJOON 2720. <Quick Change>
-t = int(input())
+# t = int(input())
 
-for _ in range(t):
-  n = int(input())
-  l = [25,10,5,1]
-  result = [0] * len(l)
-  for i in range(len(l)):
-    result[i] = n // l[i]
-    n %= l[i]
-    print(result[i],end=' ')
+# for _ in range(t):
+#   n = int(input())
+#   l = [25,10,5,1]
+#   result = [0] * len(l)
+#   for i in range(len(l)):
+#     result[i] = n // l[i]
+#     n %= l[i]
+#     print(result[i],end=' ')
 
+
+
+#. BAEKJOON 2903. <Planina>
+n = int(input())
+print(((2**n)+1)**2)
