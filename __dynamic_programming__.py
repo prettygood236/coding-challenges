@@ -321,23 +321,89 @@
 
 
 #* Napsack Problem
+# n, k = map(int,input().split())
+# wt = []
+# v = []
+# for _ in range(n):
+#   a,b = map(int,input().split())
+#   wt.append(a)
+#   v.append(b)
 
-n, k = map(int,input().split())
-wt = []
-v = []
-for _ in range(n):
-  a,b = map(int,input().split())
-  wt.append(a)
-  v.append(b)
-
-def knapSack(W, wt, v, n):
-    dp = [0 for _ in range(W+1)] 
-    for i in range(1, n+1): 
-      for w in range(W, 0, -1): 
-        if wt[i-1] <= w:
-          dp[w] = max(dp[w], dp[w-wt[i-1]]+v[i-1])
-    print(dp)
-    return dp[W]  
+# def knapSack(W, wt, v, n):
+#     dp = [0 for _ in range(W+1)] 
+#     for i in range(1, n+1): 
+#       for w in range(W, 0, -1): 
+#         if wt[i-1] <= w:
+#           dp[w] = max(dp[w], dp[w-wt[i-1]]+v[i-1])
+#     print(dp)
+#     return dp[W]  
 
 
-print(knapSack(k, wt, v, n))
+# print(knapSack(k, wt, v, n))
+
+
+
+#. Programmers - <Random number game>
+# def solution(A, B):
+#     A.sort()
+#     B.sort()
+
+#     points = 0
+#     b_index = 0
+
+#     for x in A:
+#         while b_index < len(B) and B[b_index] <= x:
+#             b_index += 1
+#         if b_index < len(B):
+#             points += 1
+#             b_index += 1
+
+#     return points
+
+
+# A = [5,1,3,7]	
+# B = [2,2,6,8]	
+# # 3
+
+# A = [2,2,2,2]	
+# B = [1,1,1,1]	
+# # 0
+
+# print(solution(A,B))
+
+
+
+#. Programmers - <Unique paths with obstacles>
+
+def solution(m, n, puddles):
+    dp = [[0]*m for _ in range(n)]
+
+    for puddle in puddles:
+        a,b = puddle
+        dp[b-1][a-1] = -1
+
+    dp[0][0] = 1
+    mod = 1_000_000_007
+
+    for i in range(n):
+        for j in range(m):
+            if (i==0 and j==0) or dp[i][j] == -1:
+                continue
+            if dp[i-1][j] != -1:
+                dp[i][j] += dp[i-1][j]
+            if dp[i][j-1] != -1:
+                dp[i][j] += dp[i][j-1]
+            dp[i][j] %= mod
+
+    return dp[n-1][m-1]
+
+# m = 4
+# n = 3
+# puddles = [[2,2]]
+# # 4
+
+m = 100
+n = 100
+puddles = [[2,2]]
+
+print(solution(m,n,puddles))

@@ -136,15 +136,26 @@
 
 # brute force니까 그냥 1부터 쭉 무식하게 찾아보자 
 
-import sys
-N = int(sys.stdin.readline())
-result = 1
+# import sys
+# N = int(sys.stdin.readline())
+# result = 1
 
-while True:
-  result += 1
-  if '666' in str(result):
-    N -= 1
-  if N == 0:
-    print(result)
-    break
+# while True:
+#   result += 1
+#   if '666' in str(result):
+#     N -= 1
+#   if N == 0:
+#     print(result)
+#     break
 
+
+
+
+#. BAEKJOON 19532. <The math class is conducted online>
+a,b,c,d,e,f = map(int,input().split())
+
+for x in range(-999,1000):
+  for y in range(-999,1000):
+    if a*x+b*y==c and d*x+e*y==f:
+      print(x,y)
+      exit()

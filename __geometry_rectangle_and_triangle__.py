@@ -75,22 +75,36 @@
 
 
 #. BAEKJOON 5073. <Triangles>
-while True:
-  l = list(map(int,input().split()))
-  l.sort()
-  a = l[2]
-  b = l[1]
-  c = l[0]
-  if a==0 and b==0 and c==0:
-    break
-  if a==b and b==c:
-    print('Equilateral')
-    continue
-  if a==b or b==c or a==c:
-    print('Isosceles')
-    continue
-  if a >= b+c:
-    print('Invalid')
-    continue
-  if a!=b and b!=c and a!=c:
-    print('Scalene')
+# while True:
+#   l = list(map(int,input().split()))
+#   l.sort()
+#   a = l[2]
+#   b = l[1]
+#   c = l[0]
+#   if a==0 and b==0 and c==0:
+#     break
+#   if a==b and b==c:
+#     print('Equilateral')
+#     continue
+#   if a >= b+c:
+#     print('Invalid')
+#     continue
+#   if a==b or b==c or a==c:
+#     print('Isosceles')
+#     continue
+#   if a!=b and b!=c and a!=c:
+#     print('Scalene')  
+
+
+
+
+#. BAEKJOON 14215. <Three bars>
+l = list(map(int,input().split()))
+l.sort()
+a = l[2]
+b = l[1]
+c = l[0]
+if a >= b+c:
+  a = b+c -1
+
+print(a+b+c)
