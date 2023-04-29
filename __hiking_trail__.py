@@ -1,26 +1,6 @@
 def solve(n, paths, gates, summits):
     # breakpoint()
-    graph = make_graph(n,paths)
-    visited = [False] * (n+1)
-    dfs(graph, 1, visited)
-
     return
-
-
-def make_graph(n,paths):
-    graph = [[] for _ in range(n+1)]
-    for path in paths:
-        index = path[0] 
-        graph[index].append(path[1])
-        graph[path[1]].append(index)
-    return graph
-
-def dfs(graph, v, visited): 
-    visited[v] = True
-    print(v, end=' ')
-    for i in graph[v]:
-        if not visited[i]: 
-            dfs(graph, i, visited) 
 
 
 n	= 6

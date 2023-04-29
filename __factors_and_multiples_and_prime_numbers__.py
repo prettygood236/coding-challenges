@@ -190,28 +190,28 @@
 
 
 #. <LCM>
-import sys
-c,d = map(int,sys.stdin.readline().split())
-# breakpoint()
-a = max(c,d)
-b = min(c,d)
+# import sys
+# c,d = map(int,sys.stdin.readline().split())
+# # breakpoint()
+# a = max(c,d)
+# b = min(c,d)
 
-r = -1
+# r = -1
 
-while True:
-  r = a%b
-  if r == 0:
-    break
-  a = b
-  b = r
+# while True:
+#   r = a%b
+#   if r == 0:
+#     break
+#   a = b
+#   b = r
     
-g = b
-a = max(c,d)
-b = min(c,d)
+# g = b
+# a = max(c,d)
+# b = min(c,d)
 
-lcm = a*b//g 
+# lcm = a*b//g 
 
-print(lcm)
+# print(lcm)
 
 
 #. a = MQ + R, b = MQ' + R c = MQ'' + R
@@ -417,3 +417,82 @@ print(lcm)
 # #. n! / ((n-m)! * m!)
 
 # print(min(two_count(n) - (two_count(n-m) + two_count(m)), five_count(n) - (five_count(n-m) + five_count(m))))
+
+
+
+
+
+#. BAEKJOON 2485. <Planted trees>
+# import math
+# n = int(input())
+# trees = [int(input()) for _ in range(n)]
+
+# distances = [trees[i+1] - trees[i] for i in range(n-1)]
+# gcd = distances[0]
+# for d in distances[1:]:
+#     gcd = math.gcd(gcd, d)
+
+# num_new_trees = (trees[-1] - trees[0]) // gcd - n + 1
+# print(num_new_trees)
+
+
+
+
+#. BAEKJOON 2485. <Next Prime>
+# def is_prime(n):
+#   if n < 2:
+#     return False
+#   else :
+#     for i in range(2,int(n**0.5)+1):
+#       if n % i == 0:
+#         return False
+#     return True
+
+# t = int(input())
+# for _ in range(t):
+#   n = int(input())
+#   while not is_prime(n):
+#     n += 1
+#   print(n)
+
+
+
+
+#. BAEKJOON 17103. <The Goldbach Partition>
+# The Goldbach Partition (also known as the Goldbach Conjecture) is an unsolved problem in number theory that states 
+# that every even integer greater than 2 can be expressed as the sum of two prime numbers.
+# def prime_list(n):
+#   sieve = [True] * n
+#   m = int(n ** 0.5)
+#   for i in range(2, m + 1):
+#     if sieve[i]:
+#       for j in range(i + i, n, i):
+#         sieve[j] = False
+#   return [i for i in range(2, n) if sieve[i]]
+
+# def goldbach_partitions(n, primes):
+#   count = 0
+#   for prime in primes:
+#     if prime > n // 2:
+#       break
+#     if n - prime in primes_set:
+#       count += 1
+#   return count
+
+# primes = prime_list(1000000)
+# primes_set = set(primes)
+
+# t = int(input())
+# for _ in range(t):
+#   n = int(input())
+#   print(goldbach_partitions(n, primes))
+
+
+
+
+#. BAEKJOON 13909. <Close the windows>
+import math
+
+n = int(input())
+result = int(math.sqrt(n))
+print(n)
