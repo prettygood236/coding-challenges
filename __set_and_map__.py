@@ -1,7 +1,4 @@
-# import sys
 
-# N = int(sys.stdin.readline())
-# Set_a = set(map(int,sys.stdin.readline().split()))
 # M = int(sys.stdin.readline())
 # L = list(map(int,sys.stdin.readline().split()))
 # Set_b = set(L)
