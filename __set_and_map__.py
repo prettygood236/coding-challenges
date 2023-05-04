@@ -88,14 +88,52 @@
 
 
 
-import sys
+# import sys
 
-str = sys.stdin.readline().strip()
-S = set()
+# str = sys.stdin.readline().strip()
+# S = set()
 
-for i in range(1,len(str)+1):
-  for j in range(len(str)+1-i):
-    temp = str[j:i+j]
-    S.add(temp)
+# for i in range(1,len(str)+1):
+#   for j in range(len(str)+1-i):
+#     temp = str[j:i+j]
+#     S.add(temp)
 
-print(len(S))
+# print(len(S))
+
+
+
+
+
+#. BAEKJOON 25192. <A bear who greets well>
+# n = int(input())
+# people_set = set()
+# count = 0 
+# for _ in range(n):
+#   s = input()
+#   if s == 'ENTER':
+#     people_set = set()
+#   else:
+#     if s in people_set:
+#       continue
+#     else:
+#       people_set.add(s)
+#       count += 1
+
+# print(count)
+
+
+
+#. BAEKJOON 26069. <ChongChong Who has a strong attachment>
+# n = int(input())
+# people_set = set(['ChongChong'])
+# count = 1
+# for _ in range(n):
+#   a,b = input().split()
+#   if a in people_set and not b in people_set:
+#     people_set.add(b)
+#     count += 1
+#   if b in people_set and not a in people_set:
+#     people_set.add(a)
+#     count += 1
+
+# print(count)

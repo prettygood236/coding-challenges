@@ -22,6 +22,13 @@
 # print(max(L)*min(L))
 
 
+
+
+
+
+
+
+
 # 하나씩 나눠보며 구하기
 # import sys
 
@@ -318,7 +325,7 @@
 #     result *= len(D[key])+1
 #   result -= 1
 
-#   print(result)
+#   print(result)print(max(L)*min(L))
     
 
 
@@ -450,8 +457,8 @@
 
 
 #. BAEKJOON 13909. <Close the windows>
-import math
+# import math
 
-n = int(input())
-result = int(math.sqrt(n))
-print(n)
+# n = int(input())
+# result = int(math.sqrt(n))
+# print(n)

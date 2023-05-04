@@ -260,3 +260,28 @@ L.sort()
 
 print(sum(L)//5)
 print(L[2])
+
+
+
+#. BAEKJOON 20920. <Memorizing English words are painful>
+def sort_key(word, freq):
+  return (-freq[word], -len(word), word)
+
+N, M = map(int, input().split())
+
+words = []
+freq = {}
+
+for _ in range(N):
+  word = input().strip()
+  if len(word) >= M:
+    if word not in freq:
+      freq[word] = 0
+      words.append(word)
+    freq[word] += 1
+
+#- I see that it's possible to pass the time complexity requirement just by creating a custom sort function and using the built-in sort method.
+words.sort(key=lambda word: sort_key(word, freq))
+
+for word in words:
+  print(word)
