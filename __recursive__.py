@@ -1,16 +1,18 @@
-def factorial(N):
-  if N > 1:
-    return N * factorial(N-1)
-  else :
-    return 1
 
-def fibonacci(N):
-  if N == 0:
-    return 0
-  if N == 1:
-    return 1
-  else :
-    return fibonacci(N-1) + fibonacci(N-2)
+# def factorial(N):
+#   if N <= 1:
+#     return 1
+#   else:
+#     return N * factorial(N-1)
+
+
+# def fibonacci(N):
+#   if N == 0:
+#     return 0
+#   if N == 1:
+#     return 1
+#   else :
+#     return fibonacci(N-1) + fibonacci(N-2)
 
 # print("어느 한 컴퓨터공학과 학생이 유명한 교수님을 찾아가 물었다.")
 # m = 0
@@ -31,24 +33,40 @@ def recursive_case_one(n,m):
 # recursive_case_one(n,m)
 
 
-def isPalidrome(str):
-  call = 0
+# def isPalidrome(str):
+#   call = 0
 
-  def recursion(str,l,r,call):
-    call += 1
-    if l >= r :
-      print(1,call)
-      return 1
-    elif str[l] != str[r]:
-      print(0,call)
-      return 0
-    else :
-      return recursion(str,l+1,r-1,call)
+#   def recursion(str,l,r,call):
+#     call += 1
+#     if l >= r :
+#       print(1,call)
+#       return 1
+#     elif str[l] != str[r]:
+#       print(0,call)
+#       return 0
+#     else :
+#       return recursion(str,l+1,r-1,call)
   
-  return recursion(str,0,len(str)-1,call)
+#   return recursion(str,0,len(str)-1,call)
 
 # import sys
 # N = int(sys.stdin.readline())
 # for _ in range(N):
 #   str = sys.stdin.readline().strip()
 #   isPalidrome(str)
+
+
+
+#. BAEKJOON 4779. <Cantoring Along>
+def cantor(str,N):
+  if N == 0:
+    return '-'
+  else:
+    return cantor(str,N-1)+' '*(3**(N-1))+cantor(str,N-1)
+
+while True:
+  try:
+    N = int(input())
+    print(cantor('',N))
+  except EOFError:
+    break
