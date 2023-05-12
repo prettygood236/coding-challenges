@@ -95,6 +95,8 @@
 
 
 
+
+
 #. <Modulo Powers>
 #. 모듈로 거듭제곱
 #! A^B mod C = ( (A mod C)^B ) mod C
@@ -172,10 +174,102 @@
 
 
 
-import sys
-n = int(sys.stdin.readline())
+# import sys
+# n = int(sys.stdin.readline())
 
-for _ in range(n//4):
-  print('long',end=' ')
+# for _ in range(n//4):
+#   print('long',end=' ')
 
-print('int')
+# print('int')
+
+
+
+
+#. BAEKJOON 2740. <Matrix Multiplication>
+# N,M = map(int,input().split())
+# A = [list(map(int,input().split()))  for _ in range(N)]
+
+# M,K = map(int,input().split())
+# B = [list(map(int,input().split()))  for _ in range(M)]
+
+# result = [[0 for _ in range(K)] for _ in range(N)]
+
+# for n in range(N):
+#     for k in range(K):
+#         for m in range(M):
+#             result[n][k] += A[n][m] * B[m][k]
+
+# for row in result:
+#     print(*row)
+
+
+
+#. BAEKJOON 10830. <Matrix Exponentiation>
+# def multiply(A, B):
+#     size = len(A)
+#     new_matrix = [[0]*size for _ in range(size)]
+    
+#     for i in range(size):
+#         for j in range(size):
+#             for k in range(size):
+#                 new_matrix[i][j] += A[i][k] * B[k][j]
+#                 new_matrix[i][j] %= 1000
+#     return new_matrix
+
+# def power(A, B):
+#     if B == 1: 
+#         return A
+#     elif B % 2: 
+#         return multiply(power(A, B-1), A)
+#     else:
+#         result = power(A, B//2)
+#         return multiply(result, result)
+
+# N, B = map(int, input().split())
+# A = [list(map(int, input().split())) for _ in range(N)]
+# result = power(A, B)
+
+# for row in result:
+#     for num in row:
+#         print(num % 1000, end=' ')
+#     print()
+
+
+
+
+
+#. BAEKJOON 11444. <Fibonacci 6>
+MOD = 1000000007
+
+def multiply(F, M): 
+    x = F[0][0] * M[0][0] + F[0][1] * M[1][0]
+    y = F[0][0] * M[0][1] + F[0][1] * M[1][1]
+    z = F[1][0] * M[0][0] + F[1][1] * M[1][0]
+    w = F[1][0] * M[0][1] + F[1][1] * M[1][1]
+  
+    F[0][0] = x % MOD
+    F[0][1] = y % MOD
+    F[1][0] = z % MOD
+    F[1][1] = w % MOD
+
+def power(F, n): 
+    if n == 0 or n == 1:
+        return
+    M = [[1, 1], [1, 0]]
+  
+    power(F, n // 2)
+    multiply(F, F)
+  
+    if n % 2 != 0:
+        multiply(F, M)
+
+def fibonacci(n): 
+    F = [[1, 1], [1, 0]]
+    if n == 0:
+        return 0
+    power(F, n - 1)
+  
+    return F[0][0]
+
+n = int(input())
+print(fibonacci(n))
