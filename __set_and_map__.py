@@ -42,19 +42,7 @@
 
 
 
-# import sys
-# from collections import Counter
-# N = int(sys.stdin.readline())
-# L = map(int,sys.stdin.readline().split())
-# R = []
 
-# cnt = Counter(L)
-# M = int(sys.stdin.readline())
-
-# R = list(map(int,sys.stdin.readline().split()))
-  
-# for i in R:
-#   print(cnt[i])
 
 
 
