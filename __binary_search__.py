@@ -1,30 +1,29 @@
 
 #. BAEKJOON 1920. <Find the number>
-def binary_search(L,target,start,end):
-    if start > end:
-        return False
-    mid = (start + end) // 2
-    if target == L[mid]:
-        return mid + 1
-    elif target < L[mid]:
-        return binary_search(L,target,start,mid-1)
-    else:
-        return binary_search(L,target,mid+1,end)
+# def binary_search(L,target,start,end):
+#     if start > end:
+#         return False
+#     mid = (start + end) // 2
+#     if target == L[mid]:
+#         return mid + 1
+#     elif target < L[mid]:
+#         return binary_search(L,target,start,mid-1)
+#     else:
+#         return binary_search(L,target,mid+1,end)
 
-N = int(input())
-L = list(map(int,input().split()))
-L.sort()
-M = int(input())
-target_list = list(map(int,input().split()))
+# N = int(input())
+# L = list(map(int,input().split()))
+# L.sort()
+# M = int(input())
+# target_list = list(map(int,input().split()))
 
-
-for i in range(M):
-    target = target_list[i]
-    answer = binary_search(L,target,0,len(L)-1)
-    if answer :
-        print(1)
-    elif not answer :
-        print(0)
+# for i in range(M):
+#     target = target_list[i]
+#     answer = binary_search(L,target,0,len(L)-1)
+#     if answer :
+#         print(1)
+#     elif not answer :
+#         print(0)
 
 
 
@@ -43,3 +42,29 @@ for i in range(M):
   
 # for i in R:
 #   print(cnt[i])
+
+
+
+
+
+#. BAEKJOON 1654. <Cutting off the online connection>
+# K,N = map(int,input().split())
+# L = list(int(input()) for _ in range(K))
+
+# start_num = 1
+# end_num = max(L)
+
+# while start_num <= end_num:
+#     mid_num = (start_num + end_num) // 2
+
+#     lines = 0
+#     for i in L:
+#         lines += i // mid_num
+
+#     if lines >= N:
+#         start_num = mid_num + 1
+#     else:
+#         end_num = mid_num - 1
+
+# print(end_num)
+
