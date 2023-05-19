@@ -68,3 +68,32 @@
 
 # print(end_num)
 
+
+
+
+#. BAEKJOON 2805. <EKO>
+N,M = map(int,input().split())
+L = list(map(int,input().split()))
+
+start_num = min(L)
+end_num = max(L)
+
+while True:
+    mid_num = (start_num + end_num) // 2
+
+    required_wood = 0
+    for i in L:
+        if i > mid_num:
+            required_wood += i - mid_num
+
+    if required_wood == M:
+        print(mid_num)
+        break
+    
+    if required_wood > M:
+        start_num = mid_num + 1
+    else:
+        end_num = mid_num - 1
+
+
+
