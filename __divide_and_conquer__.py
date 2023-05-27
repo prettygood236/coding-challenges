@@ -239,37 +239,64 @@
 
 
 #. BAEKJOON 11444. <Fibonacci 6>
-MOD = 1000000007
+# MOD = 1000000007
 
-def multiply(F, M): 
-    x = F[0][0] * M[0][0] + F[0][1] * M[1][0]
-    y = F[0][0] * M[0][1] + F[0][1] * M[1][1]
-    z = F[1][0] * M[0][0] + F[1][1] * M[1][0]
-    w = F[1][0] * M[0][1] + F[1][1] * M[1][1]
+# def multiply(F, M): 
+#     x = F[0][0] * M[0][0] + F[0][1] * M[1][0]
+#     y = F[0][0] * M[0][1] + F[0][1] * M[1][1]
+#     z = F[1][0] * M[0][0] + F[1][1] * M[1][0]
+#     w = F[1][0] * M[0][1] + F[1][1] * M[1][1]
   
-    F[0][0] = x % MOD
-    F[0][1] = y % MOD
-    F[1][0] = z % MOD
-    F[1][1] = w % MOD
+#     F[0][0] = x % MOD
+#     F[0][1] = y % MOD
+#     F[1][0] = z % MOD
+#     F[1][1] = w % MOD
 
-def power(F, n): 
-    if n == 0 or n == 1:
-        return
-    M = [[1, 1], [1, 0]]
+# def power(F, n): 
+#     if n == 0 or n == 1:
+#         return
+#     M = [[1, 1], [1, 0]]
   
-    power(F, n // 2)
-    multiply(F, F)
+#     power(F, n // 2)
+#     multiply(F, F)
   
-    if n % 2 != 0:
-        multiply(F, M)
+#     if n % 2 != 0:
+#         multiply(F, M)
 
-def fibonacci(n): 
-    F = [[1, 1], [1, 0]]
-    if n == 0:
-        return 0
-    power(F, n - 1)
+# def fibonacci(n): 
+#     F = [[1, 1], [1, 0]]
+#     if n == 0:
+#         return 0
+#     power(F, n - 1)
   
-    return F[0][0]
+#     return F[0][0]
 
-n = int(input())
-print(fibonacci(n))
+# n = int(input())
+# print(fibonacci(n))
+
+
+
+
+#. BAEKJOON 6549. <Largest Rectangle in a Histogram>
+def largest_rectangle_area(heights):
+    stack = []
+    max_area = 0
+    index = 0
+
+    while index < len(heights):
+        if not stack or heights[index] >= heights[stack[-1]]:
+            stack.append(index)
+            index += 1
+        else:
+            top_of_stack = stack.pop()
+            area = (heights[top_of_stack] *
+                    ((index - stack[-1] - 1) if stack else index))
+            max_area = max(max_area, area)
+
+    while stack:
+        top_of_stack = stack.pop()
+        area = (heights[top_of_stack] *
+                ((index - stack[-1] - 1) if stack else index))
+        max_area = max(max_area, area)
+
+    return max_area
