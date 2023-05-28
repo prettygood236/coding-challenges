@@ -277,18 +277,24 @@
 
 
 
-#. BAEKJOON 6549. <Largest Rectangle in a Histogram>
+#. BAEKJOON 6549. <Largest Rectangle in a Histogram> ??????
+import sys 
+
 def largest_rectangle_area(heights):
     stack = []
     max_area = 0
     index = 0
 
+    # index가 height리스트 길이가 될 때 까지 진행.
     while index < len(heights):
+        # stack이 비어있거나 오른쪽 높이가 더 높을 때.
         if not stack or heights[index] >= heights[stack[-1]]:
             stack.append(index)
             index += 1
+        # 오른쪽 높이가 더 낮을 때.
         else:
             top_of_stack = stack.pop()
+            # stack이 비어있다는 건 가장 왼쪽 것이 제일 높았다는 것이다.
             area = (heights[top_of_stack] *
                     ((index - stack[-1] - 1) if stack else index))
             max_area = max(max_area, area)
@@ -300,3 +306,11 @@ def largest_rectangle_area(heights):
         max_area = max(max_area, area)
 
     return max_area
+
+
+while True:
+    L = list(map(int,sys.stdin.readline().split()))
+    if len(L)==1 and L[0]==0:
+        break
+    result = largest_rectangle_area(L)
+    print(result)
