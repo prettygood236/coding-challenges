@@ -72,28 +72,28 @@
 
 
 #. BAEKJOON 2805. <EKO>
-N,M = map(int,input().split())
-L = list(map(int,input().split()))
+import sys
+N,M = map(int,sys.stdin.readline().split())
+L = list(map(int,sys.stdin.readline().split()))
+L.sort(reverse=True)
 
-start_num = min(L)
-end_num = max(L)
+start_num = 0
+end_num = L[0]
 
-while True:
+while start_num <= end_num:
     mid_num = (start_num + end_num) // 2
 
     required_wood = 0
     for i in L:
-        if i > mid_num:
-            required_wood += i - mid_num
+        if i <= mid_num:
+            break
+        required_wood += (i - mid_num)
 
-    if required_wood == M:
-        print(mid_num)
-        break
-    
-    if required_wood > M:
+    if required_wood >= M:
         start_num = mid_num + 1
     else:
         end_num = mid_num - 1
 
+print(end_num)
 
 
