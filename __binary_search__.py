@@ -124,6 +124,7 @@
 
 #     while left <= right:
 #         mid = (left + right) // 2
+          #. mid가 정답인지 판별할 식 작성!
 #         if check_distance(stalls,mid,C):
 #             ans = mid
 #             left = mid + 1
@@ -141,5 +142,23 @@
 
 
 
-#. BAEKJOON 2110. <Aggressive cows>
+#. BAEKJOON 1300. <K-th Number>
+N = int(input())  
+k = int(input())  
 
+# Initialize the binary search range 
+left, right = 1, k  
+while left <= right:
+  mid = (left + right) // 2  
+  # The variable to count the number of elements less than or equal to mid
+  cnt = 0  
+  # Iterate through row indices (i) from 1 to N
+  for i in range(1, N + 1):  
+    # Calculate the number of elements less than or equal to mid in each row, and accumulate it to cnt
+    cnt += min(mid // i, N)  
+  if cnt < k: 
+    left = mid + 1  
+  else:  
+    right = mid - 1  
+
+print(left)  
