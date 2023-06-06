@@ -143,22 +143,62 @@
 
 
 #. BAEKJOON 1300. <K-th Number>
-N = int(input())  
-k = int(input())  
+# N = int(input())  
+# k = int(input())  
 
-# Initialize the binary search range 
-left, right = 1, k  
-while left <= right:
-  mid = (left + right) // 2  
-  # The variable to count the number of elements less than or equal to mid
-  cnt = 0  
-  # Iterate through row indices (i) from 1 to N
-  for i in range(1, N + 1):  
-    # Calculate the number of elements less than or equal to mid in each row, and accumulate it to cnt
-    cnt += min(mid // i, N)  
-  if cnt < k: 
-    left = mid + 1  
-  else:  
-    right = mid - 1  
+# # Initialize the binary search range 
+# left, right = 1, k  
+# while left <= right:
+#   mid = (left + right) // 2  
+#   # The variable to count the number of elements less than or equal to mid
+#   cnt = 0  
+#   # Iterate through row indices (i) from 1 to N
+#   for i in range(1, N + 1):  
+#     # Calculate the number of elements less than or equal to mid in each row, and accumulate it to cnt
+#     cnt += min(mid // i, N)  
+#   if cnt < k: 
+#     left = mid + 1  
+#   else:  
+#     right = mid - 1  
 
-print(left)  
+# print(left)  
+
+
+
+
+#. BAEKJOON 12015. <Longest Increasing Subsequence>
+#. Just memorzing it !!!! ㅠ.ㅠ
+
+import sys
+
+def binary_search(L,num):
+  left, right = 0, len(L) - 1
+  while left <= right:
+    mid = (left + right) // 2
+    if L[mid] < num:
+      left = mid + 1
+    else:
+      right = mid - 1
+
+  return left
+    
+
+def longest_increasing_subsequence(L):
+  subsequence = [L[0]]
+
+  for num in L[1:]:
+    if subsequence[-1] < num:
+      subsequence.append(num)
+    else:
+      #. In the subsequence list, use binary search to find the rank of a number in terms of size.
+      index = binary_search(subsequence,num)
+      subsequence[index] = num
+
+  return len(subsequence)
+    
+
+N = int(sys.stdin.readline())
+A = list(map(int,sys.stdin.readline().split()))
+result = longest_increasing_subsequence(A)
+
+print(result)

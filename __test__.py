@@ -1,26 +1,37 @@
-def solution(A, B):
-    A.sort()
-    B.sort()
+import sys
 
-    points = 0
-    b_index = 0
+def binary_search(arr, x):
+    left, right = 0, len(arr) - 1
+    while left <= right:
+        mid = (left + right) // 2
+        if arr[mid] < x:
+            left = mid + 1
+        else:
+            right = mid - 1
+    return left
 
-    for x in A:
-        while b_index < len(B) and B[b_index] <= x:
-            b_index += 1
-        if b_index < len(B):
-            points += 1
-            b_index += 1
+def longest_increasing_subsequence(arr):
+    lis = [arr[0]]
+    
+    breakpoint()
 
-    return points
+    for num in arr[1:]:
+        if lis[-1] < num:
+            lis.append(num)
+        else:
+            index = binary_search(lis, num)
+            lis[index] = num
+            
+    return len(lis)
+
+input = sys.stdin.readline
+
+n = int(input().strip())
+arr = list(map(int, input().split()))
 
 
-A = [5,1,3,7]	
-B = [2,2,6,8]	
-# 3
+result = longest_increasing_subsequence(arr)
+print(result)
 
-A = [2,2,2,2]	
-B = [1,1,1,1]	
-# 0
-
-print(solution(A,B))
+#7
+#10 20 5 30 15 35 35 20 30       
