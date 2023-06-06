@@ -1,4 +1,7 @@
 
+#! Binary search can be used in problems where the dataset is sorted and you need to find a specific value or an optimal solution within a continuous range.
+#! The time complexity is O(logN)
+
 #. BAEKJOON 1920. <Find the number>
 # def binary_search(L,target,start,end):
 #     if start > end:
