@@ -1,5 +1,7 @@
 
 #. BAEKJOON 11279. <Max Heap>
+import sys
+
 def push_heap(heap, value):
   heap.append(value)
   i = len(heap) - 1
@@ -35,11 +37,11 @@ def pop_heap(heap):
 
   return max_value
 
-N = int(input())
+N = int(sys.stdin.readline())
 heap = []
 
 for _ in range(N):
-  x = int(input())
+  x = int(sys.stdin.readline())
   if x == 0:
     print(pop_heap(heap))
   else:
