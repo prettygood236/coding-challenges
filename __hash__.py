@@ -90,11 +90,32 @@
 # 입출력 예 #3
 # 첫 번째 전화번호, “12”가 두 번째 전화번호 “123”의 접두사입니다. 따라서 답은 false입니다.
 
-
+#* In the end, what's important is a simple idea or clue.
 #. Solutution 1.
+# def solution(phone_book):
+#     phone_book.sort()
+#     # breakpoint()
+#     for i in range(1,len(phone_book)):
+#   # for p1, p2 in zip(phone_book, phone_book[1:]):
+#      # if p2.startswith(p1):
+#         if phone_book[i].startswith(phone_book[i-1]):
+#             return False
+#     return True
 
-    return 
+#. Solutution 2.
+# def solution(phone_book):
+#     hash_map = {}
+#     for num in phone_book:
+#         hash_map[num] = 1
+#     for num in phone_book:
+#         temp = ''
+#         for n in num:
+#             temp += n
+#             if temp in hash_map and temp != num:
+#                 return False
+#     return True
 
-print(solution(["119", "97674223", "1195524421"]))
-print(solution(["123","456","789"]))
-print(solution(["12","123","1235","567","88"]))
+# print(solution(["119", "97674223", "1195524421"]))
+# print(solution(["123","456","789"]))
+# print(solution(["12","123","1235","567","88"]))
+# print(solution(["109",'09',"567","88"]))
