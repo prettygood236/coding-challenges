@@ -1,11 +1,11 @@
 
-#. <Rectangle>
+#- <Rectangle>
 # a = int(input())
 # b = int(input())
 # print(a*b)
 
 
-#. <Escape from the rectangle>
+#- <Escape from the rectangle>
 # import sys
 
 # x,y,w,h = map(int,sys.stdin.readline().split())
@@ -13,7 +13,7 @@
 # print(min(w-x,h-y,x,y))
 
 
-#. <CETVRTA>
+#- <CETVRTA>
 # import sys
 # cnt_x = dict()
 # cnt_y = dict()
@@ -34,7 +34,7 @@
 
 
 
-#. <Math is a physical education subject>
+#- <Math is a physical education subject>
 # print(int(input())*4)
 
 

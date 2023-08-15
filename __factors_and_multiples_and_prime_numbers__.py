@@ -102,7 +102,7 @@
 
 
 
-#. <소인수 분해>
+#- <소인수 분해>
 
 # def prime_list(n):
   
@@ -142,7 +142,7 @@
 
 
 
-#. <Perfect Number>
+#- <Perfect Number>
 # while True:
 #   n = int(input())
 #   if n == -1:
@@ -196,7 +196,7 @@
 
 
 
-#. <LCM>
+#- <LCM>
 # import sys
 # c,d = map(int,sys.stdin.readline().split())
 # # breakpoint()

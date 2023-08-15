@@ -1,5 +1,5 @@
 
-#. <Making Quad-Tree>
+#- <Making Quad-Tree>
 # import sys
 
 # n = int(sys.stdin.readline())
@@ -29,7 +29,7 @@
 
 
 
-#. <Quad-Tree> 
+#- <Quad-Tree> 
 #. 시작, 끝을 n, x,y를 이용해 정하기! n은 계속 1/2n으로 변화
 
 # import sys
@@ -60,7 +60,7 @@
 
 
 
-#. <Spatial-Tree>
+#- <Spatial-Tree>
 
 # import sys
 
@@ -97,7 +97,7 @@
 
 
 
-#. <Modulo Powers>
+#- <Modulo Powers>
 #. 모듈로 거듭제곱
 #! A^B mod C = ( (A mod C)^B ) mod C
 #! 5^117 mod 19 = ( 5^1 mod 19 * 5^4 mod 19 * 5^16 mod 19 * 5^32 mod 19 * 5^64 mod 19) mod 19
@@ -131,7 +131,7 @@
 
 
 
-#. <Lucas Theorem>
+#- <Lucas Theorem>
 # import sys
 # import math
 

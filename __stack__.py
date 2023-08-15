@@ -132,7 +132,7 @@
 
 
 
-#. <같은 숫자는 싫어>
+#- <같은 숫자는 싫어>
 # 문제 설명
 # 배열 arr가 주어집니다. 배열 arr의 각 원소는 숫자 0부터 9까지로 이루어져 있습니다. 이때, 배열 arr에서 연속적으로 나타나는 숫자는 하나만 남기고 전부 제거하려고 합니다. 단, 제거된 후 남은 수들을 반환할 때는 배열 arr의 원소들의 순서를 유지해야 합니다. 예를 들면,
 
@@ -184,7 +184,7 @@
 
 
 
-#. <기능개발>
+#- <기능개발>
 # 문제 설명
 # 프로그래머스 팀에서는 기능 개선 작업을 수행 중입니다. 각 기능은 진도가 100%일 때 서비스에 반영할 수 있습니다.
 
@@ -217,36 +217,91 @@
 # ※ 공지 - 2020년 7월 14일 테스트케이스가 추가되었습니다.
 
 
-import math 
-def solution(progresses, speeds):
-    done = []
-    for progress,speed in zip(progresses,speeds):
-        done.append(math.ceil((100 - progress) / speed))
-    done = list(reversed(done))
 
-    answer = []
-    count = 1
-    n = done.pop()
-    while True:
-        if len(done) == 0:
-            answer.append(count)
-            break    
-        if n >= done[-1]:
-            count += 1
-            done.pop()
-            if len(done) == 0:
-                answer.append(count)
-                break    
-        if n < done[-1]:
-            answer.append(count)
-            count = 1
-            n = done.pop()
-    return answer
+# import math 
+# def solution(progresses, speeds):
+#     done = []
+#     for progress,speed in zip(progresses,speeds):
+#         done.append(math.ceil((100 - progress) / speed))
+#     done = list(reversed(done))
+
+#     answer = []
+#     count = 1
+#     n = done.pop()
+#     while True:
+#         if len(done) == 0:
+#             answer.append(count)
+#             break    
+#         if n >= done[-1]:
+#             count += 1
+#             done.pop()
+#             if len(done) == 0:
+#                 answer.append(count)
+#                 break    
+#         if n < done[-1]:
+#             answer.append(count)
+#             count = 1
+#             n = done.pop()
+#     return answer
 
 
-progresses = [93, 30, 55]
-speeds = [1, 30, 5]
-print(solution(progresses,speeds)) # [2, 1]
-progresses = [95, 90, 99, 99, 80, 99]
-speeds = [1, 1, 1, 1, 1, 1]
-print(solution(progresses,speeds)) # [1, 3, 2]
+# progresses = [93, 30, 55]
+# speeds = [1, 30, 5]
+# print(solution(progresses,speeds)) # [2, 1]
+# progresses = [95, 90, 99, 99, 80, 99]
+# speeds = [1, 1, 1, 1, 1, 1]
+# print(solution(progresses,speeds)) # [1, 3, 2]
+
+
+
+
+#- <올바른 괄호> #- <VPS 1(Valid Parenthesis String)>
+# 괄호가 바르게 짝지어졌다는 것은 '(' 문자로 열렸으면 반드시 짝지어서 ')' 문자로 닫혀야 한다는 뜻입니다. 예를 들어
+
+# "()()" 또는 "(())()" 는 올바른 괄호입니다.
+# ")()(" 또는 "(()(" 는 올바르지 않은 괄호입니다.
+# '(' 또는 ')' 로만 이루어진 문자열 s가 주어졌을 때, 문자열 s가 올바른 괄호이면 true를 return 하고, 올바르지 않은 괄호이면 false를 return 하는 solution 함수를 완성해 주세요.
+
+# 제한사항
+# 문자열 s의 길이 : 100,000 이하의 자연수
+# 문자열 s는 '(' 또는 ')' 로만 이루어져 있습니다.
+# 입출력 예
+# s	answer
+# "()()"	true
+# "(())()"	true
+# ")()("	false
+# "(()("	false
+# 입출력 예 설명
+# 입출력 예 #1,2,3,4
+# 문제의 예시와 같습니다.
+
+
+
+def solution(s):
+    #. If it's an opening parenthesis, add 1. If it's a closing parenthesis, subtract 1.
+    #. If it becomes negative in the middle or if it is not 0 at the end, then it's False.
+    #- 여는 괄호면 +1, 닫는 괄호면 -1
+    #- 중간에 -가 되버리거나, 다 끝났을 때 0이 아니면 False
+    answer = True
+    judge = 0
+    for x in s:
+        if judge < 0 :
+            return False
+        if x == '(':
+            judge += 1
+        if x == ')':
+            judge -= 1
+    if judge != 0:
+        return False 
+    return True
+
+
+s = "()()"
+print(solution(s)) # true
+s = "(())()"
+print(solution(s)) # true
+s = ")()("
+print(solution(s)) # false
+s = "(()("
+print(solution(s)) # false
+

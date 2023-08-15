@@ -1,5 +1,5 @@
 
-#. <Print Verbatim>
+#- <Print Verbatim>
 
 # while True:
 #   try:
@@ -10,7 +10,7 @@
 
 
 
-#. <Starring>
+#- <Starring>
 
 # n = int(input())
 
@@ -23,7 +23,7 @@
 
 
 
-#. <Reorder Baskets>
+#- <Reorder Baskets>
 
 # import sys
 
@@ -41,7 +41,7 @@
 
 
 
-#. <Check for Palindromes>
+#- <Check for Palindromes>
 
 # import sys
 # s = list(sys.stdin.readline().rstrip())
@@ -54,7 +54,7 @@
 
 
 
-#. <Your rating is>
+#- <Your rating is>
 
 import sys
 
