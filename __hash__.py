@@ -222,31 +222,31 @@
 # ※ 공지 - 2019년 2월 28일 테스트케이스가 추가되었습니다.
 
 
-from collections import defaultdict
+# from collections import defaultdict
 
-def solution(genres, plays):
-    album = defaultdict(list)
-    play_count = defaultdict(int)
+# def solution(genres, plays):
+#     album = defaultdict(list)
+#     play_count = defaultdict(int)
 
-    for i, (genre, play) in enumerate(zip(genres,plays)):
-        #. It's getting a KeyError!
-        # album_dict[genre].append((play,i)
-        # play_count_dict[genre] += play
-        album[genre].append((play,i))
-        play_count[genre] += play
+#     for i, (genre, play) in enumerate(zip(genres,plays)):
+#         #. It's getting a KeyError!
+#         # album_dict[genre].append((play,i)
+#         # play_count_dict[genre] += play
+#         album[genre].append((play,i))
+#         play_count[genre] += play
 
-    for genre in album.keys():
-        album[genre].sort(key=lambda x: (-x[0],x[1]))
+#     for genre in album.keys():
+#         album[genre].sort(key=lambda x: (-x[0],x[1]))
 
-    result = []
-    for genre,play in sorted(play_count.items(),key=lambda x:-x[1]):
-        result.extend(value[1] for value in album[genre][:2])
+#     result = []
+#     for genre,play in sorted(play_count.items(),key=lambda x:-x[1]):
+#         result.extend(value[1] for value in album[genre][:2])
 
-    return result
+#     return result
 
 
-genres = ["classic", "pop", "classic", "classic", "pop"]	
-plays = [500, 600, 150, 800, 2500]	
-# [4, 1, 3, 0]
-print(solution(genres,plays))
+# genres = ["classic", "pop", "classic", "classic", "pop"]	
+# plays = [500, 600, 150, 800, 2500]	
+# # [4, 1, 3, 0]
+# print(solution(genres,plays))
 
