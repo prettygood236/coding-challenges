@@ -277,31 +277,32 @@
 
 
 
-def solution(s):
-    #. If it's an opening parenthesis, add 1. If it's a closing parenthesis, subtract 1.
-    #. If it becomes negative in the middle or if it is not 0 at the end, then it's False.
-    #- 여는 괄호면 +1, 닫는 괄호면 -1
-    #- 중간에 -가 되버리거나, 다 끝났을 때 0이 아니면 False
-    answer = True
-    judge = 0
-    for x in s:
-        if judge < 0 :
-            return False
-        if x == '(':
-            judge += 1
-        if x == ')':
-            judge -= 1
-    if judge != 0:
-        return False 
-    return True
+# def solution(s):
+#     #. If it's an opening parenthesis, add 1. If it's a closing parenthesis, subtract 1.
+#     #. If it becomes negative in the middle or if it is not 0 at the end, then it's False.
+#     #- 여는 괄호면 +1, 닫는 괄호면 -1
+#     #- 중간에 -가 되버리거나, 다 끝났을 때 0이 아니면 False
+#     answer = True
+#     judge = 0
+#     for x in s:
+#         if judge < 0 :
+#             return False
+#         if x == '(':
+#             judge += 1
+#         if x == ')':
+#             judge -= 1
+#     if judge != 0:
+#         return False 
+#     return True
 
 
-s = "()()"
-print(solution(s)) # true
-s = "(())()"
-print(solution(s)) # true
-s = ")()("
-print(solution(s)) # false
-s = "(()("
-print(solution(s)) # false
+# s = "()()"
+# print(solution(s)) # true
+# s = "(())()"
+# print(solution(s)) # true
+# s = ")()("
+# print(solution(s)) # false
+# s = "(()("
+# print(solution(s)) # false
+
 
