@@ -304,33 +304,73 @@
 # 100	100	[10]	101
 # 100	100	[10,10,10,10,10,10,10,10,10,10]	110
 
-from collections import deque
-def solution(bridge_length, weight, truck_weights):
-    truck_q = deque(truck_weights)
-    bridge = deque([0] * bridge_length)
-    time = 0
-    bridge_weight = 0
-    # breakpoint()
-    while truck_q or bridge_weight:
-        bridge_weight -= bridge.popleft()
-        if truck_q and (bridge_weight + truck_q[0] <= weight):
-            current_truck = truck_q.popleft()
-            bridge.append(current_truck)
-            bridge_weight += current_truck
-        else:
-            bridge.append(0)
-        time += 1
-    return time
+# from collections import deque
+# def solution(bridge_length, weight, truck_weights):
+#     truck_q = deque(truck_weights)
+#     bridge = deque([0] * bridge_length)
+#     time = 0
+#     bridge_weight = 0
+#     # breakpoint()
+#     while truck_q or bridge_weight:
+#         bridge_weight -= bridge.popleft()
+#         if truck_q and (bridge_weight + truck_q[0] <= weight):
+#             current_truck = truck_q.popleft()
+#             bridge.append(current_truck)
+#             bridge_weight += current_truck
+#         else:
+#             bridge.append(0)
+#         time += 1
+#     return time
 
-bridge_length	 = 2
-weight = 10
-truck_weights = [7,4,5,6]
-print(solution(bridge_length, weight, truck_weights)) #8
-bridge_length	 = 100
-weight = 100
-truck_weights = [10]
-print(solution(bridge_length, weight, truck_weights)) #101  
-bridge_length	 = 100
-weight = 100  
-truck_weights = [10,10,10,10,10,10,10,10,10,10]
-print(solution(bridge_length, weight, truck_weights)) #110
+# bridge_length	 = 2
+# weight = 10
+# truck_weights = [7,4,5,6]
+# print(solution(bridge_length, weight, truck_weights)) #8
+# bridge_length	 = 100
+# weight = 100
+# truck_weights = [10]
+# print(solution(bridge_length, weight, truck_weights)) #101  
+# bridge_length	 = 100
+# weight = 100  
+# truck_weights = [10,10,10,10,10,10,10,10,10,10]
+# print(solution(bridge_length, weight, truck_weights)) #110
+
+
+
+#- <Stock Price>
+# 문제 설명
+# 초 단위로 기록된 주식가격이 담긴 배열 prices가 매개변수로 주어질 때, 가격이 떨어지지 않은 기간은 몇 초인지를 return 하도록 solution 함수를 완성하세요.
+
+# 제한사항
+# prices의 각 가격은 1 이상 10,000 이하인 자연수입니다.
+# prices의 길이는 2 이상 100,000 이하입니다.
+# 입출력 예
+# prices	return
+# [1, 2, 3, 2, 3]	[4, 3, 1, 1, 0]
+# 입출력 예 설명
+# 1초 시점의 ₩1은 끝까지 가격이 떨어지지 않았습니다.
+# 2초 시점의 ₩2은 끝까지 가격이 떨어지지 않았습니다.
+# 3초 시점의 ₩3은 1초뒤에 가격이 떨어집니다. 따라서 1초간 가격이 떨어지지 않은 것으로 봅니다.
+# 4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다.
+# 5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.
+
+from collections import deque
+def solution(prices):
+    q = deque([prices[0]])
+    answer = [0] * len(prices)
+    time = 1
+    for i in range(1,len(prices)):
+        index = 1
+        if q[-index] <= prices[i]:
+            q.append(prices[i])
+            
+        else:
+            answer[i-1] = time
+            q.popleft()
+            q.append(prices[i])
+
+
+    return answer
+
+prices = [1, 2, 3, 2, 3]
+print(solution(prices)) #[4, 3, 1, 1, 0]
