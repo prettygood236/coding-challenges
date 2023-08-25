@@ -353,24 +353,30 @@
 # 3초 시점의 ₩3은 1초뒤에 가격이 떨어집니다. 따라서 1초간 가격이 떨어지지 않은 것으로 봅니다.
 # 4초 시점의 ₩2은 1초간 가격이 떨어지지 않았습니다.
 # 5초 시점의 ₩3은 0초간 가격이 떨어지지 않았습니다.
-
-from collections import deque
 def solution(prices):
-    q = deque([prices[0]])
-    answer = [0] * len(prices)
-    time = 1
-    for i in range(1,len(prices)):
-        index = 1
-        if q[-index] <= prices[i]:
-            q.append(prices[i])
-            
-        else:
-            answer[i-1] = time
-            q.popleft()
-            q.append(prices[i])
+    l = []
+    for index,value in enumerate(prices):
+        l.append([value,index])
 
+    stack = []
+    answer = [0]*len(prices)
+    for i in range(len(l)):
+        while True:
+            if not stack:
+                stack.append(l[i])
+            if stack[-1][0] > l[i][0] :
+                answer[stack[-1][1]] = l[i][1] - stack[-1][1]
+                stack.pop()
+            else :
+                stack.append(l[i])
+                break
+
+    for i in range(len(stack)):
+        answer[stack[i][1]] = stack[-1][1] - stack[i][1]
 
     return answer
 
+prices = [6, 4, 2, 8, 9, 5]
+print(solution(prices)) #[1, 1, 3, 2, 1, 0]
 prices = [1, 2, 3, 2, 3]
 print(solution(prices)) #[4, 3, 1, 1, 0]
