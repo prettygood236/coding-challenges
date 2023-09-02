@@ -77,23 +77,22 @@
 # 모든 음식의 스코빌 지수가 7 이상이 되었고 이때 섞은 횟수는 2회입니다.
 
 
-#* When should we use a heap?
-#* When we need to frequently access the maximum or minimum element of a collection, but still want to insert and delete elements efficiently. 
+#! When should we use a heap?
+#! When we need to frequently access the maximum or minimum element of a collection, but still want to insert and delete elements efficiently. 
 
 # import heapq
 
 # def solution(scoville, K):
 #     answer = 0
-#     heap_scoville = []
 #     heapq.heapify(scoville)
 #     while True:
-#         if len(heap_scoville) == 1 and heap_scoville[0] < K:
+#         if len(scoville) == 1 and scoville[0] < K:
 #             return -1
-#         if heap_scoville[0] < K:
-#             first = heapq.heappop(heap_scoville)
-#             second = heapq.heappop(heap_scoville)
+#         if scoville[0] < K:
+#             first = heapq.heappop(scoville)
+#             second = heapq.heappop(scoville)
 #             new = first + (second*2)        
-#             heapq.heappush(heap_scoville,new)
+#             heapq.heappush(scoville,new)
 #             answer += 1
 #         else:
 #             return answer
@@ -151,17 +150,35 @@
 # 2ms 시점에 6ms 걸리는 작업 요청이 들어옵니다.
 
 
+import heapq 
+
 def solution(jobs):
     answer = 0
-    time = 0
-    for x in jobs:
-        time += x[1]
-        if 
-    # answer = //len
+    current_time = 0
+    length = len(jobs)
+    heap = []
+    
+    #. 요청시간 -> 작업시간 순으로 정렬
+    jobs.sort()
+    
+    while jobs or heap:
+        #. 현재 시간 내에 요청된 모든 작업을 힙에 추가
+        while jobs and jobs[0][0] <= current_time:
+            request_time, work_time = heapq.heappop(jobs)
+            #. 작업시간이 짧은 순서대로 힙에 삽입 (작업시간, 요청시간) 순서로 삽입 (모듈에 의해 구현된 힙에 넣는 것만으로 정렬이 자동으로 된다)
+            heapq.heappush(heap, (work_time, request_time))
+        
+        if heap:
+            #. 가장 빨리 끝나는 작업부터 처리 
+            work_time, request_time = heapq.heappop(heap)
+            current_time += work_time
+            answer += current_time - request_time
 
-
-    return answer
-
+        else: 
+          #. 현재 진행 가능한 작업이 없으면 다음으로 가장 빨리 들어오는 job의 시작시점으로 이동  
+          current_time = jobs[0][0]
+            
+    return answer // length
 
 jobs = [[0, 3], [1, 9], [2, 6]] 		
 print(solution(jobs)) #9
