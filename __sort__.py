@@ -289,7 +289,7 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 
 
 
-#- <K번째수>
+#- <K-th number>
 # 문제 설명
 # 배열 array의 i번째 숫자부터 j번째 숫자까지 자르고 정렬했을 때, k번째에 있는 수를 구하려 합니다.
 
@@ -313,14 +313,56 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 # [1, 5, 2, 6, 3, 7, 4]를 4번째부터 4번째까지 자른 후 정렬합니다. [6]의 첫 번째 숫자는 6입니다.
 # [1, 5, 2, 6, 3, 7, 4]를 1번째부터 7번째까지 자릅니다. [1, 2, 3, 4, 5, 6, 7]의 세 번째 숫자는 3입니다.
 
-def solution(array, commands):
-    # answer = []
-    # for x in commands:
-    #     i,j,k = x
-    #     answer.append(sorted(array[i-1:j])[k-1])
-    # return answer
-    return list(map(lambda x:sorted(array[x[0]-1:x[1]])[x[2]-1], commands))
+# def solution(array, commands):
+#     # answer = []
+#     # for x in commands:
+#     #     i,j,k = x
+#     #     answer.append(sorted(array[i-1:j])[k-1])
+#     # return answer
+#     return list(map(lambda x:sorted(array[x[0]-1:x[1]])[x[2]-1], commands))
 
-array	= [1, 5, 2, 6, 3, 7, 4]	
-commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]]	# [5, 6, 3]
-print(solution(array, commands))
+# array	= [1, 5, 2, 6, 3, 7, 4]	
+# commands = [[2, 5, 3], [4, 4, 1], [1, 7, 3]]	# [5, 6, 3]
+# print(solution(array, commands))
+
+
+
+#- <The biggest number>
+# 문제 설명
+# 0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내 주세요.
+
+# 예를 들어, 주어진 정수가 [6, 10, 2]라면 [6102, 6210, 1062, 1026, 2610, 2106]를 만들 수 있고, 이중 가장 큰 수는 6210입니다.
+
+# 0 또는 양의 정수가 담긴 배열 numbers가 매개변수로 주어질 때, 순서를 재배치하여 만들 수 있는 가장 큰 수를 문자열로 바꾸어 return 하도록 solution 함수를 작성해주세요.
+
+# 제한 사항
+# numbers의 길이는 1 이상 100,000 이하입니다.
+# numbers의 원소는 0 이상 1,000 이하입니다.
+# 정답이 너무 클 수 있으니 문자열로 바꾸어 return 합니다.
+
+def sorting(num):
+    for i in range(len(str(max(num)))):
+      return int(str(num)[:i])
+
+def solution(numbers):
+    answer = ''
+    # d = {}
+    # for num in numbers:
+    #   if len(str(num)) in d:
+    #     d[len(str(num))].append(num)
+    #   else:
+    #     d[len(str(num))] = [num]
+    breakpoint()
+    numbers.sort(key=sorting)
+    return answer
+
+
+
+numbers	= [3, 30, 24, 15, 9,964,98,99677,2699,47]	
+print(solution(numbers)) 
+numbers	= [6, 10, 2]	
+print(solution(numbers)) # "6210"
+numbers	= [3, 30, 34, 5, 9]	
+print(solution(numbers)) # "9534330"
+
+
