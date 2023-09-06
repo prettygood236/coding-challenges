@@ -340,26 +340,29 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 # numbers의 원소는 0 이상 1,000 이하입니다.
 # 정답이 너무 클 수 있으니 문자열로 바꾸어 return 합니다.
 
-def sorting(num):
-    for i in range(len(str(max(num)))):
-      return int(str(num)[:i])
+# def solution(numbers):
+#     answer = ''.join(sorted(list(map(str,numbers)),key=lambda x: x*3,reverse=True))
+#     return  '0' if answer[0] == '0'  else answer
+
+import functools
+
+def comparator(a, b):
+  t1 = a + b
+  t2 = b + a
+  return (int(t1) > int(t2)) - (int(t1) < int(t2)) 
 
 def solution(numbers):
-    answer = ''
-    # d = {}
-    # for num in numbers:
-    #   if len(str(num)) in d:
-    #     d[len(str(num))].append(num)
-    #   else:
-    #     d[len(str(num))] = [num]
-    breakpoint()
-    numbers.sort(key=sorting)
-    return answer
+  n = [str(x) for x in numbers]
+  #. By using cmp_to_key, we can use a function that compares two argument as a key!
+  n = sorted(n, key=functools.cmp_to_key(comparator), reverse=True)
+  answer = str(int(''.join(n)))
+  return answer
 
 
-
-numbers	= [3, 30, 24, 15, 9,964,98,99677,2699,47]	
-print(solution(numbers)) 
+numbers = [3, 998, 9998, 34, 5, 9]
+print(solution(numbers))  # "999898995343"
+numbers = [0, 0, 0]
+print(solution(numbers))  # "0"
 numbers	= [6, 10, 2]	
 print(solution(numbers)) # "6210"
 numbers	= [3, 30, 34, 5, 9]	
