@@ -374,15 +374,13 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 
 
 #- <H-Index>
-#. Learned Learned how to calculate the H-Index of a list of citations.
-#. satisfying both conditions - 'h papers have at least h citations each' and 'the remaining papers have no more than h citations each'. 
-#. (This can be achieved using either ascending or descending sort)
+#. 'Learned how to calculate the H-Index of a list of citations.
+#. This is satisfying both conditions - 1. h papers have at least h citations each. and 2. the remaining papers have no more than h citations each. 
+#. (This can be achieved using either ascending or descending sort)'
 
 # 문제 설명
 # H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.
-
 # 어떤 과학자가 발표한 논문 n편 중, h번 이상 인용된 논문이 h편 이상이고 나머지 논문이 h번 이하 인용되었다면 h의 최댓값이 이 과학자의 H-Index입니다.
-
 # 어떤 과학자가 발표한 논문의 인용 횟수를 담은 배열 citations가 매개변수로 주어질 때, 이 과학자의 H-Index를 return 하도록 solution 함수를 작성해주세요.
 
 # 제한사항
@@ -401,6 +399,12 @@ def solution(citations):
       if citations[i] >= n - i: # 인용 횟 수 >= 남은 논문 수 (n-i번 이상 인용된 논문이 n-i번 이상!)
         return n - i 
     return 0 # (예외) 모든 논문이 0회 인용되었을 때
+
+# def solution(citations):
+#     citations.sort(reverse=True)
+#     # 모든 h-index를 찾아서, 그 중 최대값을 출력
+#     answer = max(map(min, enumerate(citations, start=1)))
+#     return answer
 
 # citations = [1,3,6,6,10,11,18,1,1,2]
 # print(solution(citations)) 
