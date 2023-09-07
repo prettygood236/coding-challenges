@@ -328,6 +328,10 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 
 
 #- <The biggest number>
+#. Learnd about
+#. 1. Pythons string sort method : follows lexicographical order based on ASCII.
+#. 2. cmp_to_key : Converting a comparison function to a key generation function.
+
 # 문제 설명
 # 0 또는 양의 정수가 주어졌을 때, 정수를 이어 붙여 만들 수 있는 가장 큰 수를 알아내 주세요.
 
@@ -344,28 +348,61 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 #     answer = ''.join(sorted(list(map(str,numbers)),key=lambda x: x*3,reverse=True))
 #     return  '0' if answer[0] == '0'  else answer
 
-import functools
+# import functools
 
-def comparator(a, b):
-  t1 = a + b
-  t2 = b + a
-  return (int(t1) > int(t2)) - (int(t1) < int(t2)) 
+# def comparator(a, b):
+#   t1 = a + b
+#   t2 = b + a
+#   return (int(t1) > int(t2)) - (int(t1) < int(t2)) 
 
-def solution(numbers):
-  n = [str(x) for x in numbers]
-  #. By using cmp_to_key, we can use a function that compares two argument as a key!
-  n = sorted(n, key=functools.cmp_to_key(comparator), reverse=True)
-  answer = str(int(''.join(n)))
-  return answer
-
-
-numbers = [3, 998, 9998, 34, 5, 9]
-print(solution(numbers))  # "999898995343"
-numbers = [0, 0, 0]
-print(solution(numbers))  # "0"
-numbers	= [6, 10, 2]	
-print(solution(numbers)) # "6210"
-numbers	= [3, 30, 34, 5, 9]	
-print(solution(numbers)) # "9534330"
+# def solution(numbers):
+#   n = [str(x) for x in numbers]
+#   #. By using cmp_to_key, we can use a function that compares two argument as a key!
+#   n = sorted(n, key=functools.cmp_to_key(comparator), reverse=True)
+#   answer = str(int(''.join(n)))
+#   return answer
 
 
+# numbers = [3, 998, 9998, 34, 5, 9]
+# print(solution(numbers))  # "999898995343"
+# numbers = [0, 0, 0]
+# print(solution(numbers))  # "0"
+# numbers	= [6, 10, 2]	
+# print(solution(numbers)) # "6210"
+# numbers	= [3, 30, 34, 5, 9]	
+# print(solution(numbers)) # "9534330"
+
+
+#- <H-Index>
+#. Learned Learned how to calculate the H-Index of a list of citations.
+#. satisfying both conditions - 'h papers have at least h citations each' and 'the remaining papers have no more than h citations each'. 
+#. (This can be achieved using either ascending or descending sort)
+
+# 문제 설명
+# H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다. 위키백과1에 따르면, H-Index는 다음과 같이 구합니다.
+
+# 어떤 과학자가 발표한 논문 n편 중, h번 이상 인용된 논문이 h편 이상이고 나머지 논문이 h번 이하 인용되었다면 h의 최댓값이 이 과학자의 H-Index입니다.
+
+# 어떤 과학자가 발표한 논문의 인용 횟수를 담은 배열 citations가 매개변수로 주어질 때, 이 과학자의 H-Index를 return 하도록 solution 함수를 작성해주세요.
+
+# 제한사항
+# 과학자가 발표한 논문의 수는 1편 이상 1,000편 이하입니다.
+# 논문별 인용 횟수는 0회 이상 10,000회 이하입니다.
+# 입출력 예
+# citations	return
+# [3, 0, 6, 1, 5]	3
+# 입출력 예 설명
+# 이 과학자가 발표한 논문의 수는 5편이고, 그중 3편의 논문은 3회 이상 인용되었습니다. 그리고 나머지 2편의 논문은 3회 이하 인용되었기 때문에 이 과학자의 H-Index는 3입니다.
+
+def solution(citations):
+    citations.sort()
+    n = len(citations)
+    for i in range(n):
+      if citations[i] >= n - i: # 인용 횟 수 >= 남은 논문 수 (n-i번 이상 인용된 논문이 n-i번 이상!)
+        return n - i 
+    return 0 # (예외) 모든 논문이 0회 인용되었을 때
+
+# citations = [1,3,6,6,10,11,18,1,1,2]
+# print(solution(citations)) 
+citations = [3, 0, 4, 6, 1, 5,7]	
+print(solution(citations)) #4
