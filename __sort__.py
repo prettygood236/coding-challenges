@@ -402,7 +402,7 @@ def solution(citations):
 
 # def solution(citations):
 #     citations.sort(reverse=True)
-#     # 모든 h-index를 찾아서, 그 중 최대값을 출력
+#     # 가능한 모든 h-index를 찾아서, 그 중 최대값을 반환
 #     answer = max(map(min, enumerate(citations, start=1)))
 #     return answer
 
