@@ -38,7 +38,7 @@
 # print(int(input())*4)
 
 
-#. BAEKJOON 9063. <Ground>
+#- BAEKJOON 9063. <Ground>
 # import sys
 # n = int(sys.stdin.readline())
 # min_x, min_y = 10000,10000
@@ -58,7 +58,7 @@
 
 
 
-#. BAEKJOON 9063. <Triangle Times>
+#- BAEKJOON 9063. <Triangle Times>
 # a = int(input())
 # b = int(input())
 # c = int(input())
@@ -74,7 +74,7 @@
 
 
 
-#. BAEKJOON 5073. <Triangles>
+#- BAEKJOON 5073. <Triangles>
 # while True:
 #   l = list(map(int,input().split()))
 #   l.sort()
@@ -98,7 +98,7 @@
 
 
 
-#. BAEKJOON 14215. <Three bars>
+#- BAEKJOON 14215. <Three bars>
 l = list(map(int,input().split()))
 l.sort()
 a = l[2]

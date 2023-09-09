@@ -57,7 +57,7 @@ def recursive_case_one(n,m):
 
 
 
-#. BAEKJOON 4779. <Cantoring Along>
+#- BAEKJOON 4779. <Cantoring Along>
 def cantor(str,N):
   if N == 0:
     return '-'

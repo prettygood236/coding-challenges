@@ -92,7 +92,7 @@
 
 
 
-#. BAEKJOON 25192. <A bear who greets well>
+#- BAEKJOON 25192. <A bear who greets well>
 # n = int(input())
 # people_set = set()
 # count = 0 
@@ -111,7 +111,7 @@
 
 
 
-#. BAEKJOON 26069. <ChongChong Who has a strong attachment>
+#- BAEKJOON 26069. <ChongChong Who has a strong attachment>
 # n = int(input())
 # people_set = set(['ChongChong'])
 # count = 1

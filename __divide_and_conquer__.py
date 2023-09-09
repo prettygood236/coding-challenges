@@ -185,7 +185,7 @@
 
 
 
-#. BAEKJOON 2740. <Matrix Multiplication>
+#- BAEKJOON 2740. <Matrix Multiplication>
 # N,M = map(int,input().split())
 # A = [list(map(int,input().split()))  for _ in range(N)]
 
@@ -204,7 +204,7 @@
 
 
 
-#. BAEKJOON 10830. <Matrix Exponentiation>
+#- BAEKJOON 10830. <Matrix Exponentiation>
 # def multiply(A, B):
 #     size = len(A)
 #     new_matrix = [[0]*size for _ in range(size)]
@@ -238,7 +238,7 @@
 
 
 
-#. BAEKJOON 11444. <Fibonacci 6>
+#- BAEKJOON 11444. <Fibonacci 6>
 # MOD = 1000000007
 
 # def multiply(F, M): 
@@ -277,7 +277,7 @@
 
 
 
-#. BAEKJOON 6549. <Largest Rectangle in a Histogram> ??????
+#- BAEKJOON 6549. <Largest Rectangle in a Histogram> ??????
 import sys 
 
 def largest_rectangle_area(heights):

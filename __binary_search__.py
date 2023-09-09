@@ -2,7 +2,7 @@
 #! Binary search can be used in problems where the dataset is sorted and you need to find a specific value or an optimal solution within a continuous range.
 #! The time complexity is O(logN)
 
-#. BAEKJOON 1920. <Find the number>
+#- BAEKJOON 1920. <Find the number>
 # def binary_search(L,target,start,end):
 #     if start > end:
 #         return False
@@ -31,7 +31,7 @@
 
 
 
-#. BAEKJOON 10816. <Number Card 2>
+#- BAEKJOON 10816. <Number Card 2>
 # import sys
 # from collections import Counter
 # N = int(sys.stdin.readline())
@@ -50,7 +50,7 @@
 
 
 
-#. BAEKJOON 1654. <Cutting off the online connection>
+#- BAEKJOON 1654. <Cutting off the online connection>
 # K,N = map(int,input().split())
 # L = list(int(input()) for _ in range(K))
 
@@ -74,7 +74,7 @@
 
 
 
-#. BAEKJOON 2805. <EKO>
+#- BAEKJOON 2805. <EKO>
 # import sys
 # N,M = map(int,sys.stdin.readline().split())
 # L = list(map(int,sys.stdin.readline().split()))
@@ -103,7 +103,7 @@
 
 
 
-#. BAEKJOON 2110. <Aggressive cows>
+#- BAEKJOON 2110. <Aggressive cows>
 # def check_distance(stalls,min_distance,cows):
 #     cows_count = 1
 #     last_stall = stalls[0]
@@ -145,7 +145,7 @@
 
 
 
-#. BAEKJOON 1300. <K-th Number>
+#- BAEKJOON 1300. <K-th Number>
 # N = int(input())  
 # k = int(input())  
 
@@ -169,7 +169,7 @@
 
 
 
-#. BAEKJOON 12015. <Longest Increasing Subsequence>
+#- BAEKJOON 12015. <Longest Increasing Subsequence>
 #. Just memorzing it !!!! ㅠ.ㅠ
 
 import sys

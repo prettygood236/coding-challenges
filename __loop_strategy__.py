@@ -1,5 +1,5 @@
 
-#. brute force strategy
+#- Brute force strategy
 # import random
 # box = [i for i in range(1,101)]
 # random.shuffle(box)

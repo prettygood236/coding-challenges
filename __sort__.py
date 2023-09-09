@@ -263,7 +263,7 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 
 
 
-# #. BAEKJOON 20920. <Memorizing English words are painful>
+# #- BAEKJOON 20920. <Memorizing English words are painful>
 # def sort_key(word, freq):
 #   return (-freq[word], -len(word), word)
 
@@ -357,7 +357,7 @@ def modefinder(numbers):   #numbers는 리스트나 튜플 형태의 데이터
 
 # def solution(numbers):
 #   n = [str(x) for x in numbers]
-#   #. By using cmp_to_key, we can use a function that compares two argument as a key!
+#   #- By using cmp_to_key, we can use a function that compares two argument as a key!
 #   n = sorted(n, key=functools.cmp_to_key(comparator), reverse=True)
 #   answer = str(int(''.join(n)))
 #   return answer

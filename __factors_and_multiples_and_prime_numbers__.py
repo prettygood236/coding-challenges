@@ -56,7 +56,8 @@
   
 
 
-# Sieve of Eratosthenes
+#* <Sieve of Eratosthenes>
+#. It works by iteratively marking the multiples of each prime number, starting from 2
 # def prime_list(n):
 #   sieve = [True]*n
 
@@ -388,7 +389,7 @@
 
 
 
-#. BAEKJOON 2485. <Planted trees>
+#- BAEKJOON 2485. <Planted trees>
 # import math
 # n = int(input())
 # trees = [int(input()) for _ in range(n)]
@@ -404,7 +405,7 @@
 
 
 
-#. BAEKJOON 2485. <Next Prime>
+#- BAEKJOON 2485. <Next Prime>
 # def is_prime(n):
 #   if n < 2:
 #     return False
@@ -424,9 +425,9 @@
 
 
 
-#. BAEKJOON 17103. <The Goldbach Partition>
-# The Goldbach Partition (also known as the Goldbach Conjecture) is an unsolved problem in number theory that states 
-# that every even integer greater than 2 can be expressed as the sum of two prime numbers.
+#- BAEKJOON 17103. <The Goldbach Partition>s
+#. The Goldbach Partition (also known as the Goldbach Conjecture) is an unsolved problem in number theory that states 
+#. that every even integer greater than 2 can be expressed as the sum of two prime numbers.
 # def prime_list(n):
 #   sieve = [True] * n
 #   m = int(n ** 0.5)
@@ -456,7 +457,7 @@
 
 
 
-#. BAEKJOON 13909. <Close the windows>
+#- BAEKJOON 13909. <Close the windows>
 # import math
 
 # n = int(input())

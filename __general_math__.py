@@ -1,5 +1,5 @@
 
-#. BAEKJOON 2745. <Number system conversion 1>
+#- BAEKJOON 2745. <Number system conversion 1>
 # import sys
 # n,b = sys.stdin.readline().split()
 # b = int(b)
@@ -15,7 +15,7 @@
 
 
 
-#. BAEKJOON 11005. <Number system conversion 2>
+#- BAEKJOON 11005. <Number system conversion 2>
 # import sys
 # n,b = map(int,sys.stdin.readline().split())
 
@@ -31,7 +31,7 @@
   
 
 
-#. BAEKJOON 2720. <Quick Change>
+#- BAEKJOON 2720. <Quick Change>
 # t = int(input())
 
 # for _ in range(t):
@@ -45,6 +45,6 @@
 
 
 
-#. BAEKJOON 2903. <Planina>
+#- BAEKJOON 2903. <Planina>
 n = int(input())
 print(((2**n)+1)**2)
