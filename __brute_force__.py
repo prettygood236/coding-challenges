@@ -267,6 +267,8 @@
 
 
 #- <Finding prime numbers>
+#. 1. Sieve of Eratosthenes : A method to find prime numbers up to n. iterate up to the square root of n+1 and filter out its multiples.
+#. 2. How to use permutations and combinations libraries.'                       
 # 문제 설명
 # 한자리 숫자가 적힌 종이 조각이 흩어져있습니다. 흩어진 종이 조각을 붙여 소수를 몇 개 만들 수 있는지 알아내려 합니다.
 
@@ -291,24 +293,71 @@
 
 #- 1. 에라토스테네스 체 짜서 2~numbers까지 소수들 구하고,
 #- 2. numbers로 만들 수 있는 모든 조합을 짜서 소수가 맞는지 확인해서 출력. 
-import itertools
+# import itertools
 
-def solution(numbers):
-    permutation = set([int(''.join(n)) for i in range(1,len(numbers)+1) for n in itertools.permutations(numbers, i)])
-    primes = prime_list(max(permutation))
-    return len([n for n in permutation if n in primes])
+# def solution(numbers):
+#     permutation = set([int(''.join(n)) for i in range(1,len(numbers)+1) for n in itertools.permutations(numbers, i)])
+#     primes = prime_list(max(permutation))
+#     return len([n for n in permutation if n in primes])
 
-#- 2 ~ num 까지 소수 리스트 반환
-def prime_list(num):
-    m = int((num+1)**0.5)
-    sieve = [True] * (num+1)
-    for i in range(2,m+1):
-        if sieve[i] == True:
-            for j in range(i+i,num+1,i):
-                sieve[j] = False
-    return [i for i, v in enumerate(sieve) if v and i > 1]
+# #- 2 ~ num 까지 소수 리스트 반환
+# def prime_list(num):
+#     m = int((num+1)**0.5)
+#     sieve = [True] * (num+1)
+#     for i in range(2,m+1):
+#         if sieve[i] == True:
+#             for j in range(i+i,num+1,i):
+#                 sieve[j] = False
+#     return [i for i, v in enumerate(sieve) if v and i > 1]
 
-numbers = "17"
-print(solution(numbers)) #3
-numbers = "011"
-print(solution(numbers)) #2
+# numbers = "17"
+# print(solution(numbers)) #3
+# numbers = "011"
+# print(solution(numbers)) #2
+
+
+#- <Carpet>
+#. If we check the range of variables and it does not exceed the time complexity, a brute force search can be advantageous.
+#. (In fact, this problem can be solved by setting up two equations for length and area and finding the solution to the quadratic equation.)
+
+#. 변수의 범위를 확인해 시간복잡도를 초과하지 않을 경우에는 완전탐색이다!.
+#. (사실 이 문제는 길이, 넓이의 두식을 세워 이차방정식의 해로 구할 수 있다.)
+# 문제 설명
+# Leo는 카펫을 사러 갔다가 아래 그림과 같이 중앙에는 노란색으로 칠해져 있고 테두리 1줄은 갈색으로 칠해져 있는 격자 모양 카펫을 봤습니다.
+
+# carpet.png
+
+# Leo는 집으로 돌아와서 아까 본 카펫의 노란색과 갈색으로 색칠된 격자의 개수는 기억했지만, 전체 카펫의 크기는 기억하지 못했습니다.
+
+# Leo가 본 카펫에서 갈색 격자의 수 brown, 노란색 격자의 수 yellow가 매개변수로 주어질 때 카펫의 가로, 세로 크기를 순서대로 배열에 담아 return 하도록 solution 함수를 작성해주세요.
+
+# 제한사항
+# 갈색 격자의 수 brown은 8 이상 5,000 이하인 자연수입니다.
+# 노란색 격자의 수 yellow는 1 이상 2,000,000 이하인 자연수입니다.
+# 카펫의 가로 길이는 세로 길이와 같거나, 세로 길이보다 깁니다.
+# 입출력 예
+# brown	yellow	return
+# 10	2	[4, 3]
+# 8	1	[3, 3]
+# 24	24	[8, 6]
+# 출처
+
+def solution(brown, yellow):
+    temp = 2
+    while True:
+        # breakpoint()
+        expected_w = (brown - temp) // 2
+        expected_h = (temp//2) + 2
+        if brown + yellow == expected_w*expected_h:
+            return [expected_w,expected_h]
+        temp += 2
+
+brown = 10
+yellow = 2
+print(solution(brown, yellow)) #[4,3]
+brown = 8
+yellow = 1
+print(solution(brown, yellow)) #[3,3]
+brown = 24
+yellow = 24
+print(solution(brown, yellow)) #[8,6]
