@@ -486,48 +486,106 @@
 # 3번과 7번을 연결하는 전선을 끊으면 두 전력망이 각각 4개와 3개의 송전탑을 가지게 되며, 이 방법이 최선입니다.
 
 
-from collections import defaultdict
+# from collections import defaultdict
 
-def dfs(graph,start_node):
-    visited=[]
-    stack=[start_node]
+# def dfs(graph,start_node):
+#     visited=[]
+#     stack=[start_node]
 
-    while stack:
-        node=stack.pop()
-        if node not in visited:
-            visited.append(node)
-            stack.extend(graph[node])
+#     while stack:
+#         node=stack.pop()
+#         if node not in visited:
+#             visited.append(node)
+#             stack.extend(graph[node])
 
-    return len(visited)
+#     return len(visited)
 
-def solution(n,wires):
+# def solution(n,wires):
 
-    answer=float('inf')
+#     answer=float('inf')
 
-    for i in range(n-1):
-        graph=defaultdict(list)
-        for j in range(n-1):
-            if i==j:
-                continue
-            graph[wires[j][0]].append(wires[j][1])
-            graph[wires[j][1]].append(wires[j][0])
+#     for i in range(n-1):
+#         graph=defaultdict(list)
+#         for j in range(n-1):
+#             if i==j:
+#                 continue
+#             graph[wires[j][0]].append(wires[j][1])
+#             graph[wires[j][1]].append(wires[j][0])
 
-        answer=min(answer,abs(n-2*dfs(graph,wires[i][0])))
+#         answer=min(answer,abs(n-2*dfs(graph,wires[i][0])))
 
-    return answer
+#     return answer
 
-n = 2
-wires = [[1,2]]
-print(solution(n,wires)) #3 
-n = 3
-wires = [[1,2],[1,3]]
-print(solution(n,wires)) #1
-n = 9	
-wires = [[1,3],[2,3],[3,4],[4,5],[4,6],[4,7],[7,8],[7,9]]	
-print(solution(n,wires)) #3 
-n = 4
-wires = [[1,2],[2,3],[3,4]]
-print(solution(n,wires)) #0
-n = 7	
-wires = [[1,2],[2,7],[3,7],[3,4],[4,5],[6,7]]
-print(solution(n,wires)) #1
+# n = 2
+# wires = [[1,2]]
+# print(solution(n,wires)) #3 
+# n = 3
+# wires = [[1,2],[1,3]]
+# print(solution(n,wires)) #1
+# n = 9	
+# wires = [[1,3],[2,3],[3,4],[4,5],[4,6],[4,7],[7,8],[7,9]]	
+# print(solution(n,wires)) #3 
+# n = 4
+# wires = [[1,2],[2,3],[3,4]]
+# print(solution(n,wires)) #0
+# n = 7	
+# wires = [[1,2],[2,7],[3,7],[3,4],[4,5],[6,7]]
+# print(solution(n,wires)) #1
+
+
+
+#- <Vowel dictionary>
+#. Total number of cases are 5*6*6*6*6/중복개수(?) = 6480/중복개수(?). -> Brute force?
+# 문제 설명
+# 사전에 알파벳 모음 'A', 'E', 'I', 'O', 'U'만을 사용하여 만들 수 있는, 길이 5 이하의 모든 단어가 수록되어 있습니다. 사전에서 첫 번째 단어는 "A"이고, 그다음은 "AA"이며, 마지막 단어는 "UUUUU"입니다.
+
+# 단어 하나 word가 매개변수로 주어질 때, 이 단어가 사전에서 몇 번째 단어인지 return 하도록 solution 함수를 완성해주세요.
+
+# 제한사항
+# word의 길이는 1 이상 5 이하입니다.
+# word는 알파벳 대문자 'A', 'E', 'I', 'O', 'U'로만 이루어져 있습니다.
+# 입출력 예
+# word	result
+# "AAAAE"	6
+# "AAAE"	10
+# "I"	1563
+# "EIO"	1189
+# 입출력 예 설명
+# 입출력 예 #1
+# 사전에서 첫 번째 단어는 "A"이고, 그다음은 "AA", "AAA", "AAAA", "AAAAA", "AAAAE", ... 와 같습니다. "AAAAE"는 사전에서 6번째 단어입니다.
+# 입출력 예 #2
+# "AAAE"는 "A", "AA", "AAA", "AAAA", "AAAAA", "AAAAE", "AAAAI", "AAAAO", "AAAAU"의 다음인 10번째 단어입니다.
+# 입출력 예 #3
+# "I"는 1563번째 단어입니다.
+# 입출력 예 #4
+# "EIO"는 1189번째 단어입니다.
+
+l = []
+
+def make_word(s,t):
+      global l
+      for i in range(len(s)):
+            t += s[i]
+            if len(t) > 5:
+                return ''
+            l.append(t)
+
+def solution(word):
+      global l
+      s = 'AE'
+      t = ''
+      for i in range(len(s)):
+            t += s[i]
+            l.append(t)
+            t = make_word(s,t)
+      breakpoint()
+      return 
+
+word = "AAAAE" 
+print(solution(word))  #6  
+word = "AAAE"
+print(solution(word))  #10 
+word = "I"
+print(solution(word))  #1563 
+word = "EIO"
+print(solution(word))  #1189
