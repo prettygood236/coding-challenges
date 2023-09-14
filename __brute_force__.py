@@ -535,7 +535,10 @@
 
 
 #- <Vowel dictionary>
-#. Total number of cases are 5*6*6*6*6/중복개수(?) = 6480/중복개수(?). -> Brute force?
+#* Recursive DFS implementation: set an exit condition, insert, rotate, and remove!
+#. 'nonlocal' : A keyword that allows you to assign values to variables defined in the nearest enclosing scope that isn't global.
+#. 'global' : A keyword that modify a variable at the top-level of the script. 
+#. Product function (from itertools module) : Returns cartesian product of input iterables.
 # 문제 설명
 # 사전에 알파벳 모음 'A', 'E', 'I', 'O', 'U'만을 사용하여 만들 수 있는, 길이 5 이하의 모든 단어가 수록되어 있습니다. 사전에서 첫 번째 단어는 "A"이고, 그다음은 "AA"이며, 마지막 단어는 "UUUUU"입니다.
 
@@ -560,26 +563,29 @@
 # 입출력 예 #4
 # "EIO"는 1189번째 단어입니다.
 
-l = []
-
-def make_word(s,t):
-      global l
-      for i in range(len(s)):
-            t += s[i]
-            if len(t) > 5:
-                return ''
-            l.append(t)
-
 def solution(word):
-      global l
-      s = 'AE'
+      s = 'AEIOU'
+      d = {}
       t = ''
-      for i in range(len(s)):
-            t += s[i]
-            l.append(t)
-            t = make_word(s,t)
-      breakpoint()
-      return 
+      c = 0
+
+      def make_word(t):
+            nonlocal c
+            d[t] = c
+            c += 1
+            for i in range(len(s)):
+                  if len(t) == len(s): # Set an exit condition
+                        return 
+                  t += s[i] # Insert
+                  make_word(t) # Rotate
+                  t = t[:-1] # Remove
+            
+      make_word(t)
+      return d[word]
+
+from itertools import product
+
+solution = lambda word : sorted(list(''.join(t) for i in range(5) for t in product('AEIOU',repeat = i+1))).index(word)+1
 
 word = "AAAAE" 
 print(solution(word))  #6  
