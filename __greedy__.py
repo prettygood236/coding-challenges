@@ -216,6 +216,26 @@ def solution(name):
     return s + min(case_1,case_2)
 
 
+def solution(name):
+    # Number of up and down operations
+    answer = sum([min(ord(x)-ord('A'),ord('Z')-ord(x)+1) for x in name])
+
+    n = len(name)
+    # Number of left and right operations
+    breakpoint()
+    move = n - 1 # 끝까지 쭉 갈때 조작 횟수
+    for idx in range(n):
+        next_idx = idx + 1
+        while (next_idx < n) and (name[next_idx] == 'A'):
+            next_idx += 1
+        distance = min(idx, n - next_idx)
+        move = min(move, idx + n - next_idx + distance)
+
+    answer += move
+    return answer
+
+
+
 name = 'ABA'
 print(solution(name)) #2
 name = 'AABA'
