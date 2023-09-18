@@ -1,6 +1,66 @@
 
 #* Greedy: When part of the answer is THE answer!
 
+# def solution(s):
+#     # breakpoint()
+#     i = 0
+#     new_s = ''
+#     #. We just need to iterate over the index i according to the condition. So let's use a while loop!
+#     while i < len(s): 
+#         try:
+#             if int(s[i]):
+#                 new_s += s[i]
+#                 i += 1
+#                 continue
+#         except:
+#             if s[i:i+3] == 'one':
+#                 new_s += '1'
+#                 i += 3
+#                 continue
+#             elif s[i:i+3] == 'two':
+#                 new_s += '2'
+#                 i += 3
+#                 continue
+#             elif s[i:i+3] == 'six':
+#                 new_s += '6'
+#                 i += 3
+#                 continue
+#             elif s[i:i+4] == 'zero':
+#                 new_s += '0'
+#                 i += 4
+#                 continue
+#             elif s[i:i+4] == 'four':
+#                 new_s += '4'
+#                 i += 4
+#                 continue
+#             if s[i:i+4] == 'five':
+#                 new_s += '5'
+#                 i += 4
+#                 continue
+#             if s[i:i+4] == 'nine':
+#                 new_s += '9'
+#                 i += 4
+#                 continue
+#             if s[i:i+5] == 'three':
+#                 new_s += '3'
+#                 i += 5
+#                 continue
+#             if s[i:i+5] == 'seven':
+#                 new_s += '7'
+#                 i += 5
+#                 continue
+#             if s[i:i+5] == 'eight':
+#                 new_s += '8'
+#                 i += 5
+#                 continue
+
+
+#     return new_s
+
+# s = '8zerotwo8'
+# print(solution(s))
+
+
 #- <Coin 0>
 # import sys
 
@@ -174,82 +234,222 @@
 # "JEROEN"	56
 # "JAN"	23
 
-def solution(name):
-    l = [min(ord(x)-ord('A'),ord('Z')-ord(x)+1) for x in name]
-    s = sum(l)
-    if s == 0:
-        return 0
+# def solution(name):
+#     l = [min(ord(x)-ord('A'),ord('Z')-ord(x)+1) for x in name]
+#     s = sum(l)
+#     if s == 0:
+#         return 0
 
-    # When the name is lined up like a circle, you can use the longest continuous A's as a reference point. 
-    # You need to find the start and end indices of the longest continuous A's. 
-    dp = [0] * len(name)
-    dp[0] = 0 if name[0] != 'A' else 1
-    for i in range(1,len(name)):
-        if name[i] == 'A':
-            dp[i] = 1
-            dp[i] += dp[i-1]
-    end = dp.index(max(dp))
-    start = end - max(dp) + 1
+#     # When the name is lined up like a circle, you can use the longest continuous A's as a reference point. 
+#     # You need to find the start and end indices of the longest continuous A's. 
+#     dp = [0] * len(name)
+#     dp[0] = 0 if name[0] != 'A' else 1
+#     for i in range(1,len(name)):
+#         if name[i] == 'A':
+#             dp[i] = 1
+#             dp[i] += dp[i-1]
+#     end = dp.index(max(dp))
+#     start = end - max(dp) + 1
 
 
-    # You just need to reach from start to end. 
-    # There are two methods: min(going straight (passing through A), even if you turn around, avoiding A).
+#     # You just need to reach from start to end. 
+#     # There are two methods: min(going straight (passing through A), even if you turn around, avoiding A).
 
-    # Case 1: Going straight (passing through A).
-    # However, even if you go straight, if there are A's at the end, you can stop in front of them.
-    case_1 = 0
-    last = 0
-    i = -1
-    while True:
-        if name[i] == 'A':
-            last += 1
-            i -= 1
-        else:
+#     # Case 1: Going straight (passing through A).
+#     # However, even if you go straight, if there are A's at the end, you can stop in front of them.
+#     case_1 = 0
+#     last = 0
+#     i = -1
+#     while True:
+#         if name[i] == 'A':
+#             last += 1
+#             i -= 1
+#         else:
+#             break
+#     case_1 = len(name)-1 - last
+
+#     # Case 2: Even if you turn around, avoid A."
+#     left = (len(dp)-1) - end
+#     right = start - 1 if start != 0 else 0
+#     case_2 = min(left,right)*2 + max(left,right)
+
+#     return s + min(case_1,case_2)
+
+
+# def solution(name):
+#     # Number of up and down operations
+#     answer = sum([min(ord(x)-ord('A'),ord('Z')-ord(x)+1) for x in name])
+
+#     n = len(name)
+#     # Number of left and right operations
+#     breakpoint()
+#     move = n - 1 # 끝까지 쭉 갈때 조작 횟수
+#     for idx in range(n):
+#         next_idx = idx + 1
+#         while (next_idx < n) and (name[next_idx] == 'A'):
+#             next_idx += 1
+#         distance = min(idx, n - next_idx)
+#         move = min(move, idx + n - next_idx + distance)
+
+#     answer += move
+#     return answer
+
+
+
+# name = 'ABA'
+# print(solution(name)) #2
+# name = 'AABA'
+# print(solution(name)) #3
+# name = 'BBBAAABBB'
+# print(solution(name)) #13
+# name = 'AAAAA'
+# print(solution(name)) #0
+# name = 'BBBBBBB'
+# print(solution(name)) #13
+# name = "JEROEN"	
+# print(solution(name)) #56
+# name = "JAN"	
+# print(solution(name)) #23
+# name = "JAAN"	
+# print(solution(name)) #23
+ 
+
+
+#- <Make a big number>
+#. Strings are immutable. Therefore, you can't use 'sort', but you can use 'sorted'.
+#. In Python, strings are indeed immutable. This means that once a string is created, it cannot be changed. However, you can reassign the variable to a new string. This doesn't change the original string but rather creates a new one. For example, if you have a string s = "Hello", and then do s = "World", you haven't changed "Hello" to "World". Instead, you've created a new string "World" and made s point to it.
+#. Read the problem correctly.
+# 어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.
+# 예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들수 있습니다. 이 중 가장 큰 숫자는 94 입니다.
+# 문자열 형식으로 숫자 number와 제거할 수의 개수 k가 solution 함수의 매개변수로 주어집니다. number에서 k 개의 수를 제거했을 때 만들 수 있는 수 중 가장 큰 숫자를 문자열 형태로 return 하도록 solution 함수를 완성하세요.
+
+# 제한 조건
+# number는 2자리 이상, 1,000,000자리 이하인 숫자입니다.
+# k는 1 이상 number의 자릿수 미만인 자연수입니다.
+# 입출력 예
+# number	k	return
+# "1924"	2	"94"
+# "1231234"	3	"3234"
+# "4177252841"	4	"775841"
+
+# #. 앞에서부터 쭉 봐서 가장 작은 것들부터 k 개만큼 지우는 거 였다 젠장
+
+# def solution(number, k):
+#     breakpoint()
+#     n = len(number)
+#     #. In set, the time complexity of finding an element is also O(1) like a dictionary.
+#     del_list = set()
+#     temp = 0 
+#     for i in range(1,n):
+#         if not k:
+#             break
+#         # 제거할 수 있는 k만큼 뒤에 있는 숫자가 더 클때는 제거하는게 무조건 숫자가 커진다.
+#         if k >= i-temp and number[i] > number[temp]:
+#             for j in range(temp,i):
+#                 del_list.add(j)
+#                 k -= 1
+#             temp += i-temp
+#         # k만큼 지워도 뒤에 숫자가 더 작다면 그 앞 숫자들은 지우면 안된다!
+#         elif i-temp >= k and number[i] <= number[temp]:
+#             temp = i 
+    
+#     if k:
+#         for i in range(k):
+#             del_list.add(n-1-i)
+            
+#     return ''.join([v for i,v in enumerate(number) if i not in del_list])
+
+# number = '98'
+# k = 1
+# print(solution(number, k)) #'9'
+# number = '444456'
+# k = 3
+# print(solution(number, k)) #'454321'
+# number = '1924'
+# k = 2
+# print(solution(number, k)) #'94'
+# number = '1231234'
+# k = 3
+# print(solution(number, k)) #'3234'
+# number = '4177252841'
+# k = 4
+# print(solution(number, k)) #'775841'
+# number = '987654321'
+# k = 4
+# print(solution(number, k)) #'98765'
+
+
+#- <Lifeboats>
+#- limit - 무거운 순해서 나머지가 people에 있으면 그 사람부터.
+
+# 무인도에 갇힌 사람들을 구명보트를 이용하여 구출하려고 합니다. 구명보트는 작아서 한 번에 최대 2명씩 밖에 탈 수 없고, 무게 제한도 있습니다.
+
+# 예를 들어, 사람들의 몸무게가 [70kg, 50kg, 80kg, 50kg]이고 구명보트의 무게 제한이 100kg이라면 2번째 사람과 4번째 사람은 같이 탈 수 있지만 1번째 사람과 3번째 사람의 무게의 합은 150kg이므로 구명보트의 무게 제한을 초과하여 같이 탈 수 없습니다.
+
+# 구명보트를 최대한 적게 사용하여 모든 사람을 구출하려고 합니다.
+
+# 사람들의 몸무게를 담은 배열 people과 구명보트의 무게 제한 limit가 매개변수로 주어질 때, 모든 사람을 구출하기 위해 필요한 구명보트 개수의 최솟값을 return 하도록 solution 함수를 작성해주세요.
+
+# 제한사항
+# 무인도에 갇힌 사람은 1명 이상 50,000명 이하입니다.
+# 각 사람의 몸무게는 40kg 이상 240kg 이하입니다.
+# 구명보트의 무게 제한은 40kg 이상 240kg 이하입니다.
+# 구명보트의 무게 제한은 항상 사람들의 몸무게 중 최댓값보다 크게 주어지므로 사람들을 구출할 수 없는 경우는 없습니다.
+# 입출력 예
+# people	limit	return
+# [70, 50, 80, 50]	100	3
+# [70, 80, 50]	100	3
+# ※ 2023년 07월 31일 테스트 케이스가 추가되었습니다. 기존에 제출한 코드가 통과하지 못할 수 있습니다.
+
+from collections import defaultdict
+
+def solution(people, limit):
+    d = defaultdict(int)
+    for p in people:
+        d[p] += 1
+
+    people.sort(reverse=True)
+    answer = 0
+    # breakpoint()
+    for p in people:
+        if not d:
             break
-    case_1 = len(name)-1 - last
+        if p not in d:
+            continue
+        t = limit
+        answer += 1
+        t -= p
+        d[p] -= 1
+        if d[p] == 0:
+            del d[p]
+        i = len(people)-1
+        while t >= people[i]:
+            if not d:
+                break
+            while True:
+                if t - people[i-1] < 0 or i-1 < 0:
+                    break
+                i -= 1
+            while True:
+                if people[i] in d:
+                    break
+                i += 1
+            t -= people[i]
+            d[people[i]] -= 1
+            if d[people[i]] == 0:
+                del d[people[i]]
 
-    # Case 2: Even if you turn around, avoid A."
-    left = (len(dp)-1) - end
-    right = start - 1 if start != 0 else 0
-    case_2 = min(left,right)*2 + max(left,right)
-
-    return s + min(case_1,case_2)
-
-
-def solution(name):
-    # Number of up and down operations
-    answer = sum([min(ord(x)-ord('A'),ord('Z')-ord(x)+1) for x in name])
-
-    n = len(name)
-    # Number of left and right operations
-    breakpoint()
-    move = n - 1 # 끝까지 쭉 갈때 조작 횟수
-    for idx in range(n):
-        next_idx = idx + 1
-        while (next_idx < n) and (name[next_idx] == 'A'):
-            next_idx += 1
-        distance = min(idx, n - next_idx)
-        move = min(move, idx + n - next_idx + distance)
-
-    answer += move
     return answer
 
-
-
-name = 'ABA'
-print(solution(name)) #2
-name = 'AABA'
-print(solution(name)) #3
-name = 'BBBAAABBB'
-print(solution(name)) #13
-name = 'AAAAA'
-print(solution(name)) #0
-name = 'BBBBBBB'
-print(solution(name)) #13
-name = "JEROEN"	
-print(solution(name)) #56
-name = "JAN"	
-print(solution(name)) #23
-name = "JAAN"	
-print(solution(name)) #23
- 
+people = [1,2,3,4,5]
+limit = 240
+print(solution(people,limit)) #1
+people = [70,60,50,30,27,3]
+limit = 100
+print(solution(people,limit)) #3
+people = [70, 50, 80, 50]
+limit = 100
+print(solution(people,limit)) #3
+people = [70, 80, 50]
+limit = 100
+print(solution(people,limit)) #3
