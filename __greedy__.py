@@ -54,8 +54,13 @@
 #                 i += 5
 #                 continue
 
-
 #     return new_s
+
+def solution(s):
+    d = {'zero':'0','one':'1','two':'2','three':'3','four':'4','five':'5','six':'6','seven':'7','eight':'8','nine':'9'}
+    for x in d:
+        s = s.replace(x,d[x])
+    return s
 
 # s = '8zerotwo8'
 # print(solution(s))
@@ -380,7 +385,9 @@
 
 
 #- <Lifeboats>
-#- limit - 무거운 순해서 나머지가 people에 있으면 그 사람부터.
+#. The Two Pointers algorithm : A technique used in programming to solve problems by moving two pointers within a data structure. 
+#. It's commonly used in linked lists and sorted arrays for tasks such as finding elements, detecting cycles, or locating subarrays with specific sums.
+#. The two pointers move at different speeds, so a while loop is used to handle this.
 
 # 무인도에 갇힌 사람들을 구명보트를 이용하여 구출하려고 합니다. 구명보트는 작아서 한 번에 최대 2명씩 밖에 탈 수 없고, 무게 제한도 있습니다.
 
@@ -401,49 +408,23 @@
 # [70, 80, 50]	100	3
 # ※ 2023년 07월 31일 테스트 케이스가 추가되었습니다. 기존에 제출한 코드가 통과하지 못할 수 있습니다.
 
-from collections import defaultdict
-
 def solution(people, limit):
-    d = defaultdict(int)
-    for p in people:
-        d[p] += 1
-
     people.sort(reverse=True)
     answer = 0
-    # breakpoint()
-    for p in people:
-        if not d:
-            break
-        if p not in d:
-            continue
-        t = limit
+    i = 0
+    j = len(people) -1
+
+    while i <= j:
+        temp = limit
+        temp -= people[i]
+        i += 1
+        # The condition i-1 != j is not necessary, but it can provide precision.
+        if people[j] <= temp and i-1 != j :
+            j -= 1
         answer += 1
-        t -= p
-        d[p] -= 1
-        if d[p] == 0:
-            del d[p]
-        i = len(people)-1
-        while t >= people[i]:
-            if not d:
-                break
-            while True:
-                if t - people[i-1] < 0 or i-1 < 0:
-                    break
-                i -= 1
-            while True:
-                if people[i] in d:
-                    break
-                i += 1
-            t -= people[i]
-            d[people[i]] -= 1
-            if d[people[i]] == 0:
-                del d[people[i]]
 
     return answer
 
-people = [1,2,3,4,5]
-limit = 240
-print(solution(people,limit)) #1
 people = [70,60,50,30,27,3]
 limit = 100
 print(solution(people,limit)) #3
