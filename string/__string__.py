@@ -1,4 +1,8 @@
 
+#. Strings are immutable. Therefore, you can't use 'sort', but you can use 'sorted'.
+#. In Python, strings are indeed immutable. This means that once a string is created, it cannot be changed. However, you can reassign the variable to a new string. This doesn't change the original string but rather creates a new one. For example, if you have a string s = "Hello", and then do s = "World", you haven't changed "Hello" to "World". Instead, you've created a new string "World" and made s point to it.
+#. Read the problem correctly.
+
 #- <Print Verbatim>
 
 # while True:

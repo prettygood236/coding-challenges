@@ -321,9 +321,6 @@ def solution(s):
 
 
 #- <Make a big number>
-#. Strings are immutable. Therefore, you can't use 'sort', but you can use 'sorted'.
-#. In Python, strings are indeed immutable. This means that once a string is created, it cannot be changed. However, you can reassign the variable to a new string. This doesn't change the original string but rather creates a new one. For example, if you have a string s = "Hello", and then do s = "World", you haven't changed "Hello" to "World". Instead, you've created a new string "World" and made s point to it.
-#. Read the problem correctly.
 # 어떤 숫자에서 k개의 수를 제거했을 때 얻을 수 있는 가장 큰 숫자를 구하려 합니다.
 # 예를 들어, 숫자 1924에서 수 두 개를 제거하면 [19, 12, 14, 92, 94, 24] 를 만들수 있습니다. 이 중 가장 큰 숫자는 94 입니다.
 # 문자열 형식으로 숫자 number와 제거할 수의 개수 k가 solution 함수의 매개변수로 주어집니다. number에서 k 개의 수를 제거했을 때 만들 수 있는 수 중 가장 큰 숫자를 문자열 형태로 return 하도록 solution 함수를 완성하세요.
@@ -337,100 +334,43 @@ def solution(s):
 # "1231234"	3	"3234"
 # "4177252841"	4	"775841"
 
-# #. 앞에서부터 쭉 봐서 가장 작은 것들부터 k 개만큼 지우는 거 였다 젠장
 
-# def solution(number, k):
-#     breakpoint()
-#     n = len(number)
-#     #. In set, the time complexity of finding an element is also O(1) like a dictionary.
-#     del_list = set()
-#     temp = 0 
-#     for i in range(1,n):
-#         if not k:
-#             break
-#         # 제거할 수 있는 k만큼 뒤에 있는 숫자가 더 클때는 제거하는게 무조건 숫자가 커진다.
-#         if k >= i-temp and number[i] > number[temp]:
-#             for j in range(temp,i):
-#                 del_list.add(j)
-#                 k -= 1
-#             temp += i-temp
-#         # k만큼 지워도 뒤에 숫자가 더 작다면 그 앞 숫자들은 지우면 안된다!
-#         elif i-temp >= k and number[i] <= number[temp]:
-#             temp = i 
-    
-#     if k:
-#         for i in range(k):
-#             del_list.add(n-1-i)
-            
-#     return ''.join([v for i,v in enumerate(number) if i not in del_list])
+def solution(number, k):
+    # Initialize stack with the first number
+    stack = [number[0]]
+    for num in number[1:]:
+        # Remove elements from the stack while top of the stack is less than num and k > 0
+        while len(stack) > 0 and stack[-1] < num and k > 0:
+            # remove one element from the stack
+            k -= 1
+            # remove the last element from the stack
+            stack.pop()
+        # append current element to the stack    
+        stack.append(num)
+    # If still have to remove more elements (k>0), remove from last of list(stack)
+    if k != 0:
+        stack = stack[:-k]
+    return ''.join(stack)
 
-# number = '98'
-# k = 1
-# print(solution(number, k)) #'9'
-# number = '444456'
-# k = 3
-# print(solution(number, k)) #'454321'
-# number = '1924'
-# k = 2
-# print(solution(number, k)) #'94'
-# number = '1231234'
-# k = 3
-# print(solution(number, k)) #'3234'
-# number = '4177252841'
-# k = 4
-# print(solution(number, k)) #'775841'
-# number = '987654321'
-# k = 4
-# print(solution(number, k)) #'98765'
+number = '98'
+k = 1
+print(solution(number, k)) #'9'
+number = '98765'
+k = 2
+print(solution(number, k)) #'987'
+number = '98675'
+k = 2
+print(solution(number, k)) #'987'
+number = '444456'
+k = 3
+print(solution(number, k)) #'456'
+number = '1924'
+k = 2
+print(solution(number, k)) #'94'
+number = '1231234'
+k = 3
+print(solution(number, k)) #'3234'
+number = '4177252841'
+k = 4
+print(solution(number, k)) #'775841'
 
-
-#- <Lifeboats>
-#. The Two Pointers algorithm : A technique used in programming to solve problems by moving two pointers within a data structure. 
-#. It's commonly used in linked lists and sorted arrays for tasks such as finding elements, detecting cycles, or locating subarrays with specific sums.
-#. The two pointers move at different speeds, so a while loop is used to handle this.
-
-# 무인도에 갇힌 사람들을 구명보트를 이용하여 구출하려고 합니다. 구명보트는 작아서 한 번에 최대 2명씩 밖에 탈 수 없고, 무게 제한도 있습니다.
-
-# 예를 들어, 사람들의 몸무게가 [70kg, 50kg, 80kg, 50kg]이고 구명보트의 무게 제한이 100kg이라면 2번째 사람과 4번째 사람은 같이 탈 수 있지만 1번째 사람과 3번째 사람의 무게의 합은 150kg이므로 구명보트의 무게 제한을 초과하여 같이 탈 수 없습니다.
-
-# 구명보트를 최대한 적게 사용하여 모든 사람을 구출하려고 합니다.
-
-# 사람들의 몸무게를 담은 배열 people과 구명보트의 무게 제한 limit가 매개변수로 주어질 때, 모든 사람을 구출하기 위해 필요한 구명보트 개수의 최솟값을 return 하도록 solution 함수를 작성해주세요.
-
-# 제한사항
-# 무인도에 갇힌 사람은 1명 이상 50,000명 이하입니다.
-# 각 사람의 몸무게는 40kg 이상 240kg 이하입니다.
-# 구명보트의 무게 제한은 40kg 이상 240kg 이하입니다.
-# 구명보트의 무게 제한은 항상 사람들의 몸무게 중 최댓값보다 크게 주어지므로 사람들을 구출할 수 없는 경우는 없습니다.
-# 입출력 예
-# people	limit	return
-# [70, 50, 80, 50]	100	3
-# [70, 80, 50]	100	3
-# ※ 2023년 07월 31일 테스트 케이스가 추가되었습니다. 기존에 제출한 코드가 통과하지 못할 수 있습니다.
-
-def solution(people, limit):
-    people.sort(reverse=True)
-    answer = 0
-    i = 0
-    j = len(people) -1
-
-    while i <= j:
-        temp = limit
-        temp -= people[i]
-        i += 1
-        # The condition i-1 != j is not necessary, but it can provide precision.
-        if people[j] <= temp and i-1 != j :
-            j -= 1
-        answer += 1
-
-    return answer
-
-people = [70,60,50,30,27,3]
-limit = 100
-print(solution(people,limit)) #3
-people = [70, 50, 80, 50]
-limit = 100
-print(solution(people,limit)) #3
-people = [70, 80, 50]
-limit = 100
-print(solution(people,limit)) #3
