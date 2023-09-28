@@ -25,19 +25,17 @@
 def solution(number, k):
     # Initialize stack with the first number
     stack = [number[0]]
-    for num in number[1:]:
+    for n in number[1:]:
         # Remove elements from the stack while top of the stack is less than num and k > 0
-        while len(stack) > 0 and stack[-1] < num and k > 0:
+        while k and stack and n > stack[-1]:
             # remove one element from removal count
             k -= 1
             # remove last element from stack as it's smaller than current element 
             stack.pop()
         # append current element to end of list (stack)
-        stack.append(num)
+        stack.append(n)
     # If still have to remove more elements (k>0), remove them from end of list(stack)
-    if k != 0:
-        stack = stack[:-k]
-    return ''.join(stack)
+    return ''.join(stack[:-k]) if k else ''.join(stack)
 
 number = '98'
 k = 1
