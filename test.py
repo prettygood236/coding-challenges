@@ -17,21 +17,38 @@
 
 # n	costs	return
 # 4	[[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]]	4
-# 입출력 예 설명
 
-# costs를 그림으로 표현하면 다음과 같으며, 이때 초록색 경로로 연결하는 것이 가장 적은 비용으로 모두를 통행할 수 있도록 만드는 방법입니다.
 
-# 꼭지점당 최소 1개의 연결이 존재하면 된다. => 꼭지점0부터 최소의 값들로 골라가면 된다!. 
+#. 섬당 최소 1개의 연결이 존재하면 된다. => 섬0부터 최소의 값들로 1개씩만 골라가기. (이미 연결이 존재하면 다음으로)
 def solution(n, costs):
+    # key : 섬, value : 최소 cost의 index 
     d = {}
-    for cost in costs:
-        flag 
-        d[cost[0]] = min(d.get(cost[0],n**2),cost[2])
+    # key : 연결완료된 섬, value : 최소 cost
+    c = {}
+    # 각 섬 별 최소비용인 index 저장
+    m_idx = 0
     breakpoint()
-    return
+    for idx, cost in enumerate(costs):
+        # 다음 섬으로 넘어가면 이전 섬을 연결완료 처리
+        if costs[m_idx][0] != cost[0] and (costs[m_idx][0] not in c) and (costs[m_idx][1] not in c):
+            c[costs[m_idx][0]] = costs[m_idx][2]
+            c[costs[m_idx][1]] = costs[m_idx][2]
+
+        # 이미 다리 1개 놓은 섬이면 다음으로
+        if cost[0] in c or cost[1] in c:
+            continue
+
+        d[cost[0]] = cost
+        d[cost[1]] = d[cost[1]].append(cost)
+        v = d.get(cost[0],cost)[2]
+        if cost[2] < v:
+            m_idx = idx
+
+    return sum(c.values())
 
 n = 4	
 costs = [[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]]	
+
 print(solution(n, costs)) #4
 
 
