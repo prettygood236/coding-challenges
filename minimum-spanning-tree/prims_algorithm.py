@@ -1,49 +1,64 @@
 
-#* A Minimum Spanning Tree (MST) is one of the key concepts in graph theory. 
-#* It refers to a tree in a weighted undirected graph where the sum of weights of all edges is minimized while connecting all nodes.
+#* Graph: A mathematical structure consisting of a set of nodes (or vertices) and a set of edges that connect these nodes.
+#* Tree: A connected graph without cycles, in which all nodes are interconnected and there is exactly one path between any two nodes.
+#* Spanning Tree: A subgraph of a given graph that includes all the nodes of the original graph and satisfies tree properties (no cycles).
+#* Minimum Cost Spanning Tree: Among possible spanning trees, it refers to the spanning tree where the sum of edge weights is minimal.
 
 # A Spanning Tree is a graph that connects all nodes while satisfying the properties of a tree. In other words, a spanning tree should include all nodes from the original graph and have no cycles.
-
 # Among these, the "minimum" spanning tree refers to the spanning tree where the sum of edge weights is minimal. In other words, it finds the smallest possible sum of edge weights among all possible spanning trees within a given graph.
-
 # To find an MST, Kruskal's algorithm or Prim's algorithm are typically used.
 
-#* Prim's Algorithm: Prim's algorithm can produce different results depending on its starting point. 
-#* This method starts from any arbitrary point and selects minimum-cost edges connected to that point to create an MST.
+# Prim's Algorithm: Prim's algorithm can produce different results depending on its starting point. 
+# This method starts from any arbitrary point and selects minimum-cost edges connected to that point to create an MST.
 
 # The basic principle shared by both algorithms is minimizing 'total cost' during 'edge search and selection' process while including 'all nodes' without forming any 'cycles'.
-
 # Minimum Spanning Trees are utilized in various fields such as network design, pathfinding, clustering, etc.
-import heapq  # Importing the heapq module for priority queue operations
+
+#! Prim's algorithm
+#. 1. Select an arbitrary vertex and add it to the minimum spanning tree, then add all edges connected to that vertex into a priority queue.
+#. 2. Select the edge with the smallest cost from the priority queue.
+#. 3. If that edge connects two vertices already included in the minimum spanning tree, do nothing and move on. If that edge connects a vertex u included in the minimum spanning tree and a vertex V not included in it, then add that edge and vertex V to the minimum spanning tree. Afterwards, add all edges connecting vertex V and vertices not yet included in the minimum spanning tree to the priority queue.
+#. 4. Repeat steps 2 and 3 until V-1 edges are added to the minimum spanning tree.
+import heapq
 
 def solution(n, costs):
-    adj = [[] for _ in range(n)]  # Initializing an adjacency list to store connections between nodes
-    
-    # Building the adjacency list
-    for c in costs:
-        a, b, cost = c  # Unpacking the node-node-cost triplet
-        adj[a].append((cost, b))  # Adding an edge from 'a' to 'b' with weight 'cost'
-        adj[b].append((cost, a))  # Adding an edge from 'b' to 'a' with weight 'cost'
-    
-    # Initializing Prim's algorithm
-    connected_nodes = [0]  # Starting from node 0 (or any arbitrary node)
-    candidate_edge_list = adj[0]  # All edges connected to node 0 are potential candidates for MST
-    heapq.heapify(candidate_edge_list)  # Turning candidate_edge_list into a heap structure (priority queue)
-    
-    total_cost = 0   # This will hold the total cost of MST
-    
-    while candidate_edge_list:   # While there are still edges that might be added to MST 
-        cost, b = heapq.heappop(candidate_edge_list)   # Pop and retrieve the edge with smallest cost
-        
-        if b not in connected_nodes:   # If this edge leads to a node not yet included in MST 
-            connected_nodes.append(b)   # Add this new node into our MST nodes set 
-            total_cost += cost          # Increase total_cost by adding current smallest cost
-            
-            for edge in adj[b]:         ## Check all edges starting from our newly added node 
-                if edge[1] not in connected_nodes:   
-                    heapq.heappush(candidate_edge_list, edge)  
-                    ## If those edges lead to nodes that are not yet included,
-                    ## add them as candidates into our heap.
+    # Create an empty adjacency list
+    graph = {i: {} for i in range(n)}
 
-    return total_cost     ## When no more nodes left outside of our tree,
-                          ## return the final calculated minimum spanning tree's weight.
+    # Fill the adjacency list with data from costs
+    for frm, to, cost in costs:
+        graph[frm][to] = cost
+        graph[to][frm] = cost
+
+    # Initialize an empty list to store the minimum spanning tree
+    min_span_tree = []
+    
+    # Choose an arbitrary vertex (we'll choose the first one)
+    start_vertex = 0
+    
+    # Create a priority queue and add all edges connected to the starting vertex
+    edges = [(cost, start_vertex, to) for to, cost in graph[start_vertex].items()]
+    
+    heapq.heapify(edges)
+
+    # Create a set to track visited vertices and add the starting vertex
+    visited = set([start_vertex])
+
+    while edges:
+        # Select the edge with smallest cost from priority queue 
+        cost, frm, to = heapq.heappop(edges)
+         
+        if to not in visited:
+            visited.add(to)
+            min_span_tree.append((frm,to,cost))
+             
+            for next_node,cost2 in graph[to].items():
+                if next_node not in visited:
+                    heapq.heappush(edges,(cost2,to,next_node))
+
+    return sum(cost for frm,to,cost in min_span_tree)
+
+n = 4	
+costs = [[0,1,1],[0,2,2],[1,2,5],[1,3,1],[2,3,8]]	
+
+print(solution(n, costs)) #4
