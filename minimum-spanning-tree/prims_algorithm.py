@@ -1,8 +1,8 @@
 
-#* Graph: A mathematical structure consisting of a set of nodes (or vertices) and a set of edges that connect these nodes.
-#* Tree: A connected graph without cycles, in which all nodes are interconnected and there is exactly one path between any two nodes.
-#* Spanning Tree: A subgraph of a given graph that includes all the nodes of the original graph and satisfies tree properties (no cycles).
-#* Minimum Cost Spanning Tree: Among possible spanning trees, it refers to the spanning tree where the sum of edge weights is minimal.
+#* Graph: A mathematical structure consisting of a set of (1)nodes (or vertices) and a set of (2)edges that connect these nodes.
+#* Tree: A (1)connected graph (2)without cycles, in which all nodes are interconnected and there is exactly one path between any two nodes.
+#* Spanning Tree: A (1)subgraph of a given graph that includes all the nodes of the original graph and satisfies tree properties ((2)no cycles).
+#* Minimum Cost Spanning Tree: Among possible spanning trees, it refers to the spanning tree where the sum of edge (3)weights is minimal.
 
 # A Spanning Tree is a graph that connects all nodes while satisfying the properties of a tree. In other words, a spanning tree should include all nodes from the original graph and have no cycles.
 # Among these, the "minimum" spanning tree refers to the spanning tree where the sum of edge weights is minimal. In other words, it finds the smallest possible sum of edge weights among all possible spanning trees within a given graph.

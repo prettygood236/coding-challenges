@@ -1,19 +1,19 @@
-# import sys
-# N,M = map(int,sys.stdin.readline().split())
-# s = []
+import sys
+N,M = map(int,sys.stdin.readline().split())
+s = []
 
-# def dfs():
-#   if len(s) == M:
-#     print(' '.join(map(str,s)))
-#     return
+def dfs():
+  if len(s) == M:
+    print(' '.join(map(str,s)))
+    return
 
-#   for i in range(1,N+1):
-#     if i not in s:
-#       s.append(i)
-#       dfs()
-#       s.pop()
+  for i in range(1,N+1):
+    if i not in s:
+      s.append(i)
+      dfs()
+      s.pop()
 
-# dfs()
+dfs()
 
 
 
@@ -259,27 +259,3 @@
 #   R.append(abs(sum_s-sum_l))
 
 # print(min(R))
-
-
-
-
-
-
-
-
-
-w = input()
-vowels = ['A','E','I','O','U']
-answer = []
-
-def dfs(word):
-  for i in range(len(vowels)):
-    word = word + vowels[i]
-    if len(word) > 5:
-      return
-    answer.append(word)  #! 넣고!
-    dfs(word) #! 돌리고!
-    word = word[:-1] #! 뺴고! #?
-
-dfs('')
-print(answer.index(w)+1)
