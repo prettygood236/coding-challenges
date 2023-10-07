@@ -41,11 +41,11 @@ def dp_fib(n):
   dp[1] = dp[2] = 1 
    
   
-    k =3 
-    while k <= n:
-        dp[k] = dp[k - 1] + dp[k -2]
-        k +=1 
-        dp_count +=1 
+  k =3 
+  while k <= n:
+      dp[k] = dp[k - 1] + dp[k -2]
+      k +=1 
+      dp_count +=1 
 
 
 recur_fib(n)

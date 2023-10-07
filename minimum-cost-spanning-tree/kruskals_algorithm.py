@@ -37,5 +37,5 @@ def kruskal(n, costs):
             union(u,v)
             total_cost += w
             
-     return total_cost  # Return final minimum spanning tree's weight.
+    return total_cost  # Return final minimum spanning tree's weight.
 
