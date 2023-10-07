@@ -1,3 +1,19 @@
+# ---
+# title: Time Overlap Problem
+# tags: [CodingChallenges, Python, TwoPointerAlgorithm, SweepLineAlgorithm]
+# created: '2023-03-10'
+# ---
+
+# # Time Overlap Problem
+
+# This document contains the solution for a problem that finds the maximum overlap in a set of time intervals using two pointer algorithm and sweep line algorithm.
+
+# ## Problem Description
+# Given a list of timelines where each timeline consists of a start time and an end time, find out the maximum overlap among these timelines.
+
+# ## Solution
+
+# ```python
 from datetime import datetime, timedelta
 
 def count_max_overlap(timelines):
