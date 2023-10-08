@@ -1,6 +1,6 @@
 # ---
 # title: Number Word Replacement
-# tags: [String]
+# tags: [CodingChallenges, Python, String]
 # created: '2023-09-24'
 # ---
 

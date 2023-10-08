@@ -1,6 +1,6 @@
 # ---
 # title: Longest Common Subsequence (LCS)
-# tags: [CodingChallenges, Python, DynamicProgramming]
+# tags: [CodingChallenges, Python, DynamicProgramming, LCS]
 # created: '2022-11-08'
 # ---
 

@@ -1,52 +1,26 @@
-# N으로 표현
+# 정수 삼각형
 # 문제 설명
-# 아래와 같이 5와 사칙연산만으로 12를 표현할 수 있습니다.
+# 스크린샷 2018-09-14 오후 5.44.19.png
 
-# 12 = 5 + 5 + (5 / 5) + (5 / 5)
-# 12 = 55 / 5 + 5 / 5
-# 12 = (55 + 5) / 5
+# 위와 같은 삼각형의 꼭대기에서 바닥까지 이어지는 경로 중, 거쳐간 숫자의 합이 가장 큰 경우를 찾아보려고 합니다. 아래 칸으로 이동할 때는 대각선 방향으로 한 칸 오른쪽 또는 왼쪽으로만 이동 가능합니다. 예를 들어 3에서는 그 아래칸의 8 또는 1로만 이동이 가능합니다.
 
-# 5를 사용한 횟수는 각각 6,5,4 입니다. 그리고 이중 가장 작은 경우는 4입니다.
-# 이처럼 숫자 N과 number가 주어질 때, N과 사칙연산만 사용해서 표현 할 수 있는 방법 중 N 사용횟수의 최솟값을 return 하도록 solution 함수를 작성하세요.
+# 삼각형의 정보가 담긴 배열 triangle이 매개변수로 주어질 때, 거쳐간 숫자의 최댓값을 return 하도록 solution 함수를 완성하세요.
 
 # 제한사항
-# N은 1 이상 9 이하입니다.
-# number는 1 이상 32,000 이하입니다.
-# 수식에는 괄호와 사칙연산만 가능하며 나누기 연산에서 나머지는 무시합니다.
-# 최솟값이 8보다 크면 -1을 return 합니다.
-
-# 예제 #2
-# 11 = 22 / 2와 같이 2를 3번만 사용하여 표현할 수 있습니다.
+# 삼각형의 높이는 1 이상 500 이하입니다.
+# 삼각형을 이루고 있는 숫자는 0 이상 9,999 이하의 정수입니다.
 
 
-def solution(N, number):
-    # N을 1번만 쓰는 경우
-    if N == number:
-        return 1
-    
-    # N을 2번 이상 쓰는 경우
-    # 바텀업으로 올라가보자
-    dp = {1:{N}}
-    c = 2
-    while True:
-        if c > 8:
-            return -1
-        s = set([int(str(N)*c)])
-        for i in range(1, c//2+1):
-            for x in dp[i]:
-                for y in dp[c-i]:
-                    s.update((x+y,x-y,y-x,x*y))
-                    s.update((x//y if y!=0 else 0,))
-                    s.update((y//x if x!=0 else 0,))
-        if number in s:
-            return c
-        dp[c] = s
-        c += 1
 
-N = 5 
-number = 24
-print(solution(N, number)) # 4
-N = 2
-number = 11
-print(solution(N, number)) # 3
+def solution(triangle):
+    dp = [[0]*len(x) for x in triangle]
+    dp[0][0] = triangle[0][0]
+    for i in range(1,len(triangle)):
+        for j in range(len(triangle[i-1])):
+            dp[i][j] = max(dp[i][j],dp[i-1][j]+triangle[i][j])
+            dp[i][j+1] = max(dp[i][j+1],dp[i-1][j]+triangle[i][j+1])
+    breakpoint()
+    return max(dp[-1])
 
+triangle = [[7], [3, 8], [8, 1, 0], [2, 7, 4, 4], [4, 5, 2, 6, 5]]	
+print(solution(triangle)) # 30
