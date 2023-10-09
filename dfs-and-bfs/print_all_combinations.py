@@ -1,6 +1,6 @@
 # ---
 # title: Print All Combinations (DFS)
-# tags: [CodingChallenges, Algorithm, Python, DFS]
+# tags: [CodingChallenges, Python, DFS]
 # created: '2022-08-21'
 # ---
 

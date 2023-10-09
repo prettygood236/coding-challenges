@@ -1,6 +1,6 @@
 # ---
 # title: Longest Increasing Subsequence (LIS)
-# tags: [CodingChallenges, Python, DynamicProgramming]
+# tags: [CodingChallenges, Python, DynamicProgramming, LIS]
 # created: '2022-11-07'
 # ---
 

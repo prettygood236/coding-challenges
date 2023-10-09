@@ -1,3 +1,18 @@
+// ---
+// title: Longest Palindrome
+// tags: [CodingChallenges, JavaScript, TwoPointers, Palindrome]
+// created: '2022-07-11'
+// ---
+
+// ## Problem Description
+
+// A palindrome is a word, number, phrase, or other sequence of characters that reads the same forward and backward (ignoring spaces, punctuation, and capitalization). Write a function that finds the longest palindromic substring in a given string.
+
+// ## Solution
+
+// This problem can be solved using two pointers approach. The idea is to expand around each character and find longest palindrome. We keep track of maximum length palindrome seen so far.
+
+// ```javascript
 function longestPalindrome(str) {
   let n = str.length; // calculating size of string
   if (n < 2) return n; // if string is empty then size will be 0.

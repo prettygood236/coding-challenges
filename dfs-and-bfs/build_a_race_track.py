@@ -1,6 +1,6 @@
 # ---
 # title: Build a Race Track
-# tags: [CodingChallenges, Algorithm, Python, BFS]
+# tags: [CodingChallenges, Python, BFS]
 # created: '2022-08-23'
 # ---
 

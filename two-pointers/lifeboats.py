@@ -1,6 +1,6 @@
 # ---
 # title: Lifeboats
-# tags: [CodingChallenges, Python, TwoPointerAlgorithm]
+# tags: [CodingChallenges, Python, TwoPointers]
 # created: '2023-08-07'
 # ---
 

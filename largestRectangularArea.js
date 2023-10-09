@@ -8,41 +8,44 @@ const largestRectangularArea = function (histogram) {
   let area = 0;
 
   while (index < histogram.length) {
-    console.log("11111111111111111")
-    console.log("stack = ", stack)
-    console.log("index = ", index)
-    if (stack.length === 0 || histogram[stack[stack.length - 1]] <= histogram[index]) {
-      console.log("22222222222222222")
+    console.log('11111111111111111');
+    console.log('stack = ', stack);
+    console.log('index = ', index);
+    if (
+      stack.length === 0 ||
+      histogram[stack[stack.length - 1]] <= histogram[index]
+    ) {
+      console.log('22222222222222222');
       stack.push(index);
-      console.log("stack = ", stack)
+      console.log('stack = ', stack);
       index += 1;
-      console.log("index = ", index)
+      console.log('index = ', index);
     } else {
-      console.log("33333333333333333")
+      console.log('33333333333333333');
       top_of_stack = stack.pop();
-      console.log("top_of_stack = ", top_of_stack)
-      console.log("index = ", index)
+      console.log('top_of_stack = ', top_of_stack);
+      console.log('index = ', index);
       area =
         histogram[top_of_stack] *
         (stack.length > 0 ? index - stack[stack.length - 1] - 1 : index);
-      console.log("area = ", area)
+      console.log('area = ', area);
       max_area = Math.max(max_area, area);
-      console.log("max_area = ", max_area)
+      console.log('max_area = ', max_area);
     }
   }
 
   while (stack.length > 0) {
-    console.log("444444444444444444")
-    console.log("stack = ", stack)
+    console.log('444444444444444444');
+    console.log('stack = ', stack);
     top_of_stack = stack.pop();
-    console.log("top_of_stack = ", top_of_stack)
-    console.log("index = ", index)
+    console.log('top_of_stack = ', top_of_stack);
+    console.log('index = ', index);
     area =
       histogram[top_of_stack] *
       (stack.length > 0 ? index - stack[stack.length - 1] - 1 : index);
-      console.log("area = ", area)
+    console.log('area = ', area);
     max_area = Math.max(max_area, area);
-    console.log("max_area = ", max_area)
+    console.log('max_area = ', max_area);
   }
   return max_area;
 };

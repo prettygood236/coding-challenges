@@ -32,3 +32,4 @@ for i in range(n):
         l[i].append(l[i-1][1]+t)
 
 print(max(l[-1]))
+

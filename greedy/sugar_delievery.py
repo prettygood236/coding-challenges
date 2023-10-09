@@ -1,6 +1,6 @@
 # ---
 # title: Sugar Delivery
-# tags: [CodingChallenges, Algorithm, Python, Greedy]
+# tags: [CodingChallenges, Python, Greedy]
 # created: '2023-08-23'
 # ---
 

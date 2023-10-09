@@ -1,6 +1,6 @@
 # ---
 # title: Longest Common Prefix
-# tags: [CodingChallenges, Python, Strings]
+# tags: [CodingChallenges, Python, String]
 # created: '2022-07-11'
 # ---
 
