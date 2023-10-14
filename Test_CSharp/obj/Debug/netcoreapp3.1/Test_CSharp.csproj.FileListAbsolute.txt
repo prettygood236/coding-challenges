@@ -1,0 +1,13 @@
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/bin/Debug/netcoreapp3.1/Test_CSharp
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/bin/Debug/netcoreapp3.1/Test_CSharp.deps.json
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/bin/Debug/netcoreapp3.1/Test_CSharp.runtimeconfig.json
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/bin/Debug/netcoreapp3.1/Test_CSharp.runtimeconfig.dev.json
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/bin/Debug/netcoreapp3.1/Test_CSharp.dll
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/bin/Debug/netcoreapp3.1/Test_CSharp.pdb
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/obj/Debug/netcoreapp3.1/Test_CSharp.csprojAssemblyReference.cache
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/obj/Debug/netcoreapp3.1/Test_CSharp.AssemblyInfoInputs.cache
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/obj/Debug/netcoreapp3.1/Test_CSharp.AssemblyInfo.cs
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/obj/Debug/netcoreapp3.1/Test_CSharp.csproj.CoreCompileInputs.cache
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/obj/Debug/netcoreapp3.1/Test_CSharp.dll
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/obj/Debug/netcoreapp3.1/Test_CSharp.pdb
+/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/obj/Debug/netcoreapp3.1/Test_CSharp.genruntimeconfig.cache
