@@ -48,7 +48,7 @@ def solution(arr):
         
         for start in range(n-cnt+1):
             # 'start' is the starting point of each section. 
-            # For example, if the array is [1,'+',2,'-',3], possible starting points are first element '1', third element '+', fifth element '2', etc., which correspond to indices 0, 2, 4 respectively.
+            # For example, if the array is [1,'+',2,'-',3], possible starting points are first element '1', third element '2', fifth element '3', etc., which correspond to indices 0, 2, 4 respectively.
             
             end = start + cnt - 1
             # 'end' is the end point of each section calculated based on the defined 'start' and number of digits included ('cnt').
@@ -65,6 +65,10 @@ def solution(arr):
                 else:
                     dp_max[start][end] = max(dp_max[start][end], dp_max[start][i] - dp_min[i+1][end])
                     dp_min[start][end] = min(dp_min[start][end], dp_min[start][i] - dp_max[i+1][end])
+
+                print(dp_max)
+                print(dp_min)
+
 
     # Finally, 'dp_max[0][-1]' represents among calculation results of largest possible scope containing all numbers. 
     return int(dp_max[0][-1])
