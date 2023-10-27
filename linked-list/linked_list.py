@@ -1,3 +1,20 @@
+# ---
+# title: LinkedList
+# tags: [CodingChallenges, Python, LinkedList]
+# created: '2023-10-27'
+# ---
+
+# ## Problem Description
+
+# A LinkedList is a linear data structure, in which the elements are not stored at contiguous memory locations. In simple words, the elements are linked using pointers.
+
+# In this task, you are required to implement a LinkedList in Python, including methods to add a node after a specific node and to represent the LinkedList.
+
+# ## Solution
+
+# This problem can be solved using the concept of Nodes and LinkedList data structure. A Node has two properties: data and next. The LinkedList has a head, which points to the first Node in the list. 
+
+# ```python
 class Node:
     def __init__(self, data):
         self.data = data

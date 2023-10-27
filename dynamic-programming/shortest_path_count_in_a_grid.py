@@ -51,3 +51,6 @@ def solution(m, n, puddles):
 
 m = 4; n = 3; puddles= [[1, 2], [2, 2]]
 print(solution(m, n, puddles)) #3
+# ```
+
+# [[Avoid Puddles]]

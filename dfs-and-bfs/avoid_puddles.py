@@ -1,3 +1,27 @@
+# ---
+# title: Avoid Puddles
+# tags: [CodingChallenges, Python, BFS]
+# created: '2023-12-12'
+# ---
+
+# ## Problem Description
+
+# Due to continuous heavy rain, some areas are flooded. You are trying to go to school through areas that are not submerged. The path from home to school can be represented as an m x n grid.
+
+# For example, the picture below represents a case where m = 4 and n = 3.
+
+
+# The top left corner (home) is represented by coordinates (1, 1), and the bottom right corner (school) is represented by coordinates (m, n).
+
+# Given the size of the grid m, n and a 2D array puddles containing coordinates of flooded areas as parameters, write a solution function that returns the remainder of dividing by 1,000,000,007 the number of shortest paths you can only move right and down from home to school.
+
+# ## Solution
+
+# This problem can be solved using breadth-first search (BFS). The idea is to traverse the grid from the start point to the end point, only moving right and down, while avoiding puddles.
+
+# Here's how this looks in Python:
+
+# ```python
 from collections import deque
 
 def solution(m,n,puddles):

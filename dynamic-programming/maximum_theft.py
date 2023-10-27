@@ -21,22 +21,24 @@
 
 # ```python
 def solution(money):
-    dp_first = [0]*len(money) # Start from first house
-    dp_first[0]=money[0]
-    dp_first[1]=max(money[0],money[1])
-    
-    for i in range(2,len(money)-1): # Don't visit last house
-        dp_first[i]=max(dp_first[i-2]+money[i],dp_first[i-1])
-        
-    dp_second=[0]*len(money) # Start from second house
-    dp_second[0]= 0 
-    dp_second[1]=money[1]
-    
-    for i in range(2,len(money)): 
-        dp_second[i]=max(dp_second[i-2]+money[i],dp_second[i-1])
+    n = len(money)
 
-   return max(max(dp_first),max(dp_second))  
+    # The case where the first house can be chosen (the last house cannot be chosen)
+    dp_first = [0] * n
+    dp_first[0] = money[0] # Don't visit last house
+    dp_first[1] = max(money[0],money[1])
 
+    for i in range(2,n-1):
+        dp_first[i] = max(dp_first[i-2]+money[i],dp_first[i-1])
 
-money=[1,2,3,1]; 
-print(solution( money)) #4
+    # The case where the last house can be chosen (the first house cannot be chosen)
+    dp_last = [0] * n
+    dp_last[0] = 0 # Don't visit first house
+    dp_last[1] = money[1]
+
+    for i in range(2,n):
+        dp_last[i] = max(dp_last[i-2]+money[i],dp_last[i-1])
+
+    return max(max(dp_first),max(dp_last))
+money=[1,3,5,7,9]; 
+print(solution(money)) #14
