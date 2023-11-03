@@ -30,8 +30,8 @@ def solution(N,M):
 
       for i in range(1,N+1):
         if i not in s:
-          s.append(i)
-          dfs()
-          s.pop()
+          s.append(i) #! Add it!
+          dfs() #! Run it!
+          s.pop() #! Remove it!
 
     dfs()
