@@ -1,8 +1,13 @@
 {
   "version": 2,
-  "dgSpecHash": "FsumrprSWvavRM7fDnXp35L2Hm4tAYkHSwpqLTMVtpBXbyAHAe78kYsipkIfvA6T4sl2HQnwhmoWLhAfP8Aj5Q==",
+  "dgSpecHash": "iqNce8XA23NRwhL5qw3KTe33KXoSWaeWATKb7DlMcL+G6iKEym/UTGhP/jkRogUzZ6Xgz1ap5mEpN2k73I0ztw==",
   "success": true,
-  "projectFilePath": "/home/chan/Dev/1_PROJECTS/coding-challenges/Test_CSharp/Test_CSharp.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "C:\\Users\\fortu\\Downloads\\DEV\\coding-challenges\\Test_CSharp\\Test_CSharp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\fortu\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\fortu\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512",
+    "C:\\Users\\fortu\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\3.1.10\\microsoft.aspnetcore.app.ref.3.1.10.nupkg.sha512",
+    "C:\\Users\\fortu\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\3.1.32\\microsoft.netcore.app.host.win-x64.3.1.32.nupkg.sha512"
+  ],
   "logs": []
 }
